@@ -1,16 +1,16 @@
+/* Inspiration: http://tennisclub.themerex.net/ */
+
 /* Build on Bootstrap 4 */ 
 
 $theme-colors: (
   "primary": #203354,
-  "secondary": #99BC44,
+  "secondary": #7F2422,
   "light-bg": #F6F7F3
 );
 
 $btn-border-radius: 0;
 
 @import "node_modules/bootstrap/scss/bootstrap";
-
-/* Inspiration: http://tennisclub.themerex.net/ */
 
 /* Typography */
 
@@ -31,20 +31,48 @@ section:nth-child(2n) {
 }
 
 .app-navbar-top {
-  height: 56px;
+  height: 50px;
+  font-size: $font-size-base * .8;
+}
+
+.navbar-collapse {
+  text-transform: uppercase;
+  font-size: 85%;
 }
 
 .navbar-member-button {
-  height: 56px;
+  height: 50px;
   margin: -10px 0;
-  padding: 0.875rem 1.75rem;
+  padding: 0.7rem 1.75rem;
+}
+
+.frontpage-title {
+  line-height: 17px;
+}
+
+.frontpage-title .first {
+  font-weight: bold;
+  letter-spacing: -3px;
+}
+
+.frontpage-title .second {
+  font-weight: 200;
+  letter-spacing: -3px;
+  color: theme-color('secondary');
+}
+
+.frontpage-title .third {
+  font-size: 13px;
+  opacity: .6;
+  position: relative;
+  left: 9px;
 }
 
 .frontpage-header-image {
   height: 33vw;
   max-height: 450px;
   min-height: 150px;
-  background-image: linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1) ), url('https://scontent-ams3-1.cdninstagram.com/t51.2885-15/e35/13414125_528215047376592_713208030_n.jpg');
+  background-image: url('images/header3.jpg');
   background-size: cover;
   background-position: center center;
   opacity: .7;
@@ -53,4 +81,25 @@ section:nth-child(2n) {
 .footer {
   background: theme-color('primary');
   color: color('white');
+}
+
+.social {
+  display: block;
+  width: 40px;
+  height: 40px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: none;
+}
+
+.social:hover {
+  text-decoration: none;
+}
+
+.social-facebook {
+  background: #1b3353;  
 }

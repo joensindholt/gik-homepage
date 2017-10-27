@@ -2,11 +2,9 @@
 <html lang="en">
 
 <head>
-  <title>Hello, world!</title>
-  <!-- Required meta tags -->
+  <title>Gentofte Idræts Klub</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <!-- App CSS -->
   <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -14,46 +12,58 @@
   <!-- top-bar -->
   <nav class="navbar navbar-expand-md app-navbar-top navbar-dark bg-primary">
     <div class="container">
-      <!-- Navbar content -->
-      <ul class="navbar-nav">
-        <li class="nav-item text-muted py-2 mr-4 d-none d-md-block">
-          +45 1234 5678
-        </li>
-        <li class="nav-item text-muted py-2 mr-4 d-none d-sm-block">
-          git.atletik@gmail.com
+      <!-- content -->
+      <ul class="navbar-nav text-muted">
+        <li class="nav-item py-2 mr-4 d-none d-sm-block">
+          gik.atletik@gmail.com
         </li>
       </ul>
       <a class="btn btn-secondary navbar-member-button text-white font-weight-bold ml-auto">Bliv medlem</a>
     </div>
   </nav>
 
-  <!-- Frontpage Header -->
+  <!-- frontpage header -->
   <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light my-3 my-md-5">
+    <nav class="navbar navbar-expand-lg navbar-light my-3 my-md-4">
       <a class="navbar-brand" href="#">
-        <img src="http://www.gentofte-ik.dk/_/rsrc/1472848118347/config/customLogo.gif?revision=4" width="50" />
+        <img src="images/logo-50.png" width="50" class="d-none d-sm-inline" />
+        <img src="images/logo-50.png" width="30" class="d-inline d-sm-none" />
       </a>
       <!--front page title -->
-      <div class="h1 pt-2 text-primary d-none d-md-block mr-auto">Gentofte Atletik</div>
-      <div class="h1 pt-2 text-primary d-none d-sm-block d-md-none mr-auto">GIK Atletik</div>
-      <div class="h1 pt-2 text-primary d-sm-none mr-auto">GIK</div>
+      <div class="h1 pt-3 text-primary mr-auto frontpage-title">
+        <span class="first">GIK</span><span class="second">Atletik</span>
+        <br/>
+        <span class="third">Gentofte Idræts Klub</span>
+      </div>
       <!-- navbar toggler -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
         aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
+      <!-- menu items -->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto mr-4">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home
+            <a class="nav-link" href="#">Forside
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="#">Træning</a>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Medlemmer</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Klubtøj</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Stævner</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Kontakt</a>
+          </li>
+          <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
               aria-expanded="false">
               Dropdown
@@ -67,28 +77,34 @@
           </li>
           <li class="nav-item">
             <a class="nav-link disabled" href="#">Disabled</a>
-          </li>
+          </li> -->
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          [f]
-        </form>
+        <a class="social social-facebook" href="https://da-dk.facebook.com/GIK-Gentofte-Idr%C3%A6ts-Klub-Gentofte-Atletik-779438128804409/"
+          title="Facebook">
+          f
+        </a>
       </div>
     </nav>
   </div>
-
-  <!-- Frontpage Image -->
+  <!-- frontpage image -->
   <div class="frontpage-header-image"></div>
-
+  <!-- sections -->
   <div class="sections">
-    <!-- Section -->
+    <!-- section -->
     <section>
       <div class="container">
         <h3>Section Title</h3>
         <p>This is text in a section</p>
       </div>
     </section>
-
-    <!-- Section -->
+    <!-- section -->
+    <section>
+      <div class="container">
+        <h3>Section Title</h3>
+        <p>This is text in another section</p>
+      </div>
+    </section>
+    <!-- section -->
     <section>
       <div class="container">
         <h3>Section Title</h3>
@@ -96,17 +112,16 @@
       </div>
     </section>
   </div>
-
-  <!-- Footer -->
+  <!-- footer -->
   <div class="footer p-5">
     <div class="container">
       <div class="row justify-content-center">
-        <!-- Logo, Sales Pitch, Social Icons -->
+        <!-- logo, sales pitch, social icons -->
         <div class="col-md-4">
           <h3 class="text-white">GIK Atletik</h3>
           <p class="text-muted">Kom og værd med - vi springer, løber, kaster mm.</p>
         </div>
-        <!-- Contact Us -->
+        <!-- contact us -->
         <div class="col-md-4">
           <h5 class="text-white">Kontakt os</h5>
           <strong>Adresse</strong>
@@ -121,9 +136,8 @@
       </div>
     </div>
   </div>
-
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <!-- optional javascript -->
+  <!-- jquery first, then popper.js, then bootstrap -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
