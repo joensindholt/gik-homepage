@@ -1,0 +1,56 @@
+/* Build on Bootstrap 4 */ 
+
+$theme-colors: (
+  "primary": #203354,
+  "secondary": #99BC44,
+  "light-bg": #F6F7F3
+);
+
+$btn-border-radius: 0;
+
+@import "node_modules/bootstrap/scss/bootstrap";
+
+/* Inspiration: http://tennisclub.themerex.net/ */
+
+/* Typography */
+
+h1, h2, h3, h4, h5 {
+    color: theme-color('primary');
+}
+
+section {
+    padding: 50px 0;
+}
+section:nth-child(2n) {
+    background-color: theme-color('light-bg');
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+}
+
+.app-navbar-top {
+  height: 56px;
+}
+
+.navbar-member-button {
+  height: 56px;
+  margin: -10px 0;
+  padding: 0.875rem 1.75rem;
+}
+
+.frontpage-header-image {
+  height: 33vw;
+  max-height: 450px;
+  min-height: 150px;
+  background-image: linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1) ), url('https://scontent-ams3-1.cdninstagram.com/t51.2885-15/e35/13414125_528215047376592_713208030_n.jpg');
+  background-size: cover;
+  background-position: center center;
+  opacity: .7;
+}
+
+.footer {
+  background: theme-color('primary');
+  color: color('white');
+}

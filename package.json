@@ -1,0 +1,14 @@
+{
+  "name": "gik-homepage",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Joen Sindholt",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^4.0.0-beta.2"
+  }
+}
