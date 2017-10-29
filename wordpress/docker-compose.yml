@@ -1,0 +1,19 @@
+version: "3"
+services:
+
+  mysql:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+
+  wordpress:
+    image: wordpress
+    restart: always
+    ports:
+    environment:
+      WORDPRESS_DB_HOST: mysql
+      WORDPRESS_DB_PASSWORD: password
+      - "8080:80"
+    # volumes:
+    #   - ./gik-theme:/var/www/html/wp-content/themes/gik
