@@ -15,5 +15,5 @@ services:
     environment:
       WORDPRESS_DB_HOST: mysql
       WORDPRESS_DB_PASSWORD: password
-    # volumes:
-    #   - ./gik-theme:/var/www/html/wp-content/themes/gik
+    volumes:
+      - ./gik-theme:/var/www/html/wp-content/themes/gik
