@@ -52,8 +52,13 @@ section:nth-child(2n) {
   padding: 0.7rem 1.75rem;
 }
 
+.navbar-full-width {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 .frontpage-title {
-  line-height: 17px;
+  line-height: 24px;
 }
 
 .frontpage-title .first {
@@ -70,8 +75,7 @@ section:nth-child(2n) {
 .frontpage-title .third {
   font-size: 13px;
   opacity: .6;
-  position: relative;
-  left: 9px;
+  text-align: center;
 }
 
 .frontpage-header-image {

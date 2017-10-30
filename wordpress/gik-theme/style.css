@@ -6002,8 +6002,12 @@ section:nth-child(2n) {
   margin: -10px 0;
   padding: 0.7rem 1.75rem; }
 
+.navbar-full-width {
+  padding-left: 0;
+  padding-right: 0; }
+
 .frontpage-title {
-  line-height: 17px; }
+  line-height: 24px; }
 
 .frontpage-title .first {
   font-weight: bold;
@@ -6017,14 +6021,12 @@ section:nth-child(2n) {
 .frontpage-title .third {
   font-size: 13px;
   opacity: .6;
-  position: relative;
-  left: 9px; }
+  text-align: center; }
 
 .frontpage-header-image {
   height: 33vw;
   max-height: 450px;
   min-height: 150px;
-  background-image: url("images/header3.jpg");
   background-size: cover;
   background-position: center center;
   opacity: .7; }

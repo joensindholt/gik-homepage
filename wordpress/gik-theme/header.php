@@ -30,16 +30,15 @@
 
   <!-- frontpage header -->
   <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light my-3 my-md-4">
+    <nav class="navbar navbar-full-width navbar-expand-lg navbar-light my-3 my-md-4">
       <a class="navbar-brand" href="#">
         <img src="<?php echo wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ), 'full' )[0]; ?>" width="50" class="d-none d-sm-inline" />
         <img src="<?php echo wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ), 'full' )[0]; ?>" width="30" class="d-inline d-sm-none" />
       </a>
       <!--front page title -->
       <div class="h1 pt-3 text-primary mr-auto frontpage-title">
-        <span class="first">GIK</span><span class="second">Atletik</span>
-        <br/>
-        <span class="third">Gentofte Idræts Klub</span>
+        <div><span class="first">GIK</span><span class="second">Atletik</span></div>
+        <div class="third">Gentofte Idræts Klub</div>
       </div>
       <!-- navbar toggler -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
