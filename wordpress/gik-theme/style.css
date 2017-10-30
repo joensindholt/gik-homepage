@@ -6028,8 +6028,7 @@ section:nth-child(2n) {
   max-height: 450px;
   min-height: 150px;
   background-size: cover;
-  background-position: center center;
-  opacity: .7; }
+  background-position: center center; }
 
 .footer {
   background: #203354;
