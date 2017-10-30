@@ -4,20 +4,31 @@
       <div class="row">
         <!-- logo, sales pitch, social icons -->
         <div class="col-md-6">
-          <h3 class="text-white">GIK Atletik</h3>
-          <p class="text-muted">Kom og værd med - vi springer, løber, kaster mm.</p>
+          <h3 class="text-white"><?php echo get_option('blogname'); ?></h3>
+          <?php if ( get_option('sales_pitch') ) : ?>
+            <p class="text-muted">
+          <?php echo get_option('sales_pitch'); ?>
+          </p>
+          <?php endif; ?>
         </div>
         <!-- contact us -->
         <div class="col-md-4">
-          <h5 class="text-white">Kontakt os</h5>
-          <strong>Adresse</strong>
-          <div class="text-muted">Ved stadion 6, 2820 Gentofte</div>
-          <br/>
-          <strong>Ring til os</strong>
-          <div class="text-muted">+45 1234 5678</div>
-          <br/>
-          <strong>Email</strong>
-          <div class="text-muted">gik.atletik@gmail.com</div>
+          <h5 class="text-white"><?php echo get_option('footer_contact_text'); ?></h5>
+          <?php if ( get_option('address') ) : ?>
+            <strong>Adresse</strong>
+            <div class="text-muted"><?php echo get_option('address'); ?></div>
+            <br/>
+          <?php endif; ?>
+          <?php if ( get_option('email') ) : ?>
+            <strong>Email</strong>
+            <div class="text-muted"><?php echo get_option('email'); ?></div>
+            <br/>
+          <?php endif; ?>
+          <?php if ( get_option('phone') ) : ?>
+            <strong>Ring til os</strong>
+            <div class="text-muted"><?php echo get_option('phone'); ?></div>
+            <br/>
+          <?php endif; ?>
         </div>
       </div>
     </div>

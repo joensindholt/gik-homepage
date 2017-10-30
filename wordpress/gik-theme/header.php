@@ -14,11 +14,17 @@
     <div class="container">
       <!-- content -->
       <ul class="navbar-nav text-muted">
+      <?php if ( get_option('email') ) : ?>
         <li class="nav-item py-2 mr-4 d-none d-sm-block">
-          gik.atletik@gmail.com
+        <?php echo get_option('email'); ?>
         </li>
+      <?php endif; ?>
       </ul>
-      <a class="btn btn-secondary navbar-member-button text-white font-weight-bold ml-auto">Bliv medlem</a>
+      <?php if ( get_option('topbar_button_text') ) : ?>
+        <a class="btn btn-secondary navbar-member-button text-white font-weight-bold ml-auto" href="<?php echo get_option('topbar_button_link'); ?>">
+          <?php echo get_option('topbar_button_text'); ?>
+        </a>
+      <?php endif; ?>
     </div>
   </nav>
 
@@ -51,10 +57,13 @@
               'fallback_cb'		=> 'WP_Bootstrap_Navwalker::fallback',
               'walker'			=> new WP_Bootstrap_Navwalker() ) ); 
         ?>
-        <a class="social social-facebook" href="https://da-dk.facebook.com/GIK-Gentofte-Idr%C3%A6ts-Klub-Gentofte-Atletik-779438128804409/"
-          title="Facebook">
-          f
-        </a>
+        <!-- https://da-dk.facebook.com/GIK-Gentofte-Idr%C3%A6ts-Klub-Gentofte-Atletik-779438128804409/ -->
+        <?php if ( get_option('facebook') ) : ?>
+          <a class="social social-facebook" href="<?php echo get_option('facebook'); ?>"
+            title="Facebook">
+            f
+          </a>
+        <?php endif; ?>
       </div>
     </nav>
   </div>

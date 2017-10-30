@@ -19,3 +19,9 @@
   </div>
 
 <?php get_footer(); ?>
+
+<style>
+ .frontpage-header-image {
+    background-image: url("<?php header_image(); ?>");
+ }
+</style>
