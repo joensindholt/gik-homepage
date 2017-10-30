@@ -100,6 +100,7 @@ add_action( 'admin_init', 'custom_settings_page_setup' );
 
 // **************************************************************************************
 
-add_theme_support( 'custom-header' )
+add_theme_support( 'custom-header' );
+add_theme_support( 'custom-logo' );
 
 ?>

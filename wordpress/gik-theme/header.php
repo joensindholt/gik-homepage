@@ -32,8 +32,8 @@
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light my-3 my-md-4">
       <a class="navbar-brand" href="#">
-        <img src="images/logo-50.png" width="50" class="d-none d-sm-inline" />
-        <img src="images/logo-50.png" width="30" class="d-inline d-sm-none" />
+        <img src="<?php echo wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ), 'full' )[0]; ?>" width="50" class="d-none d-sm-inline" />
+        <img src="<?php echo wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ), 'full' )[0]; ?>" width="30" class="d-inline d-sm-none" />
       </a>
       <!--front page title -->
       <div class="h1 pt-3 text-primary mr-auto frontpage-title">
