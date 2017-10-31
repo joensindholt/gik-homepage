@@ -103,4 +103,41 @@ add_action( 'admin_init', 'custom_settings_page_setup' );
 add_theme_support( 'custom-header' );
 add_theme_support( 'custom-logo' );
 
+// **************************************************************************************
+// Short codes
+// **************************************************************************************
+
+function image_section_shortcode( $atts ) {
+  $a = shortcode_atts( array(
+      'image-url' => '',
+      'title' => 'Title',
+      'subtitle' => 'Subtitle',
+      'text' => 'Some content',
+    ), $atts );
+
+  return "<section>
+  <div class=\"container\">
+    <div class=\"image-section\">
+      <div class=\"image-section__image\" style=\"background-image: url('{$a['image-url']}')\">
+      </div>
+      <div class=\"image-section__content\">
+        <h1 class=\"image-section__title\">{$a['title']}</h1>
+        <p class=\"image-section__subtitle\">{$a['subtitle']}</p>
+        <div class=\"image-section__text\">
+          {$a['text']}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>";
+}
+
+add_shortcode( 'image-section', 'image_section_shortcode' );
+
+function section_shortcode( $atts, $content = null ) {
+	return '<section><div class="container">' . do_shortcode($content) . '</div></section>';
+}
+
+add_shortcode( 'section', 'section_shortcode' );
+
 ?>
