@@ -7,6 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="<?php echo get_bloginfo('template_directory'); ?>/style.css">
   <link rel="stylesheet" href="<?php echo get_bloginfo('template_directory'); ?>/css/font-awesome.min.css">
+  <script src="https://unpkg.com/vue"></script>
+  <script src="<?php echo get_bloginfo('template_directory'); ?>/scripts/app.js"></script>
 </head>
 
 <body>

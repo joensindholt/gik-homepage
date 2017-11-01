@@ -8408,6 +8408,10 @@ a.text-light-bg:focus, a.text-light-bg:hover {
   overflow: visible;
   clip: auto; }
 
+/* Vue */
+[v-cloak] {
+  display: none; }
+
 /* Typography */
 h1, h2, h3, h4, h5 {
   color: #203354; }
@@ -8432,6 +8436,9 @@ p {
 
 section {
   padding: 50px 0; }
+
+section.full-height {
+  padding: 0; }
 
 section:nth-child(2n) {
   background-color: #F6F7F3; }
@@ -8616,3 +8623,71 @@ section h1 {
 
 .contact-box__position {
   color: #7F2422; }
+
+.events {
+  _display: flex; }
+
+.events__upcomming__title,
+.events__details__title {
+  font-size: 1.5rem; }
+
+.events__upcomming {
+  background: #7F2422;
+  color: #fff;
+  padding: 1.5rem;
+  box-shadow: 2px 0 10px 0px rgba(0, 0, 0, 0.25); }
+
+.events__details {
+  padding: 1.5rem; }
+
+.events_upcomming_divider {
+  width: 40px;
+  border-top: 1px solid #fff;
+  margin: 1rem 0; }
+
+.events__upcomming__event {
+  display: flex;
+  align-items: strech;
+  margin-bottom: 3px; }
+
+.events_upcomming__event-date {
+  background: white;
+  margin-right: 3px;
+  text-align: center;
+  padding: .5rem 1rem;
+  color: #7F2422;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+
+.events_upcomming__event-date-day {
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 1.7rem; }
+
+.events_upcomming__event-info {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px;
+  flex-grow: 1;
+  line-height: 1.3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+
+.events_upcomming__event-info-title {
+  font-weight: bold; }
+
+@media (min-width: 768px) {
+  .events {
+    min-height: 500px;
+    display: flex; }
+  .events__upcomming,
+  .events__details {
+    padding: 3rem; }
+  .events__upcomming {
+    width: 40%; }
+  .events__details {
+    width: 60%; }
+  .events__upcomming__title,
+  .events__details__title {
+    font-size: 2rem; } }

@@ -115,7 +115,11 @@ add_theme_support( 'custom-logo' );
 // **************************************************************************************
 
 function section_shortcode( $atts, $content = null ) {
-	return '<section><div class="container">' . do_shortcode($content) . '</div></section>';
+  $a = shortcode_atts( array(
+    'style' => ''
+  ), $atts );
+
+	return '<section ' . ($a['style'] ? "class=\"{$a['style']}\"" : "") . '><div class="container">' . do_shortcode($content) . '</div></section>';
 }
 
 function image_section_shortcode( $atts ) {
@@ -221,6 +225,38 @@ function board_member_shortcode( $atts ) {
   </div>";
 }
 
+function events_shortcode( $atts ) {
+  return "<div id=\"events\">
+  <div class=\"events col-full-height\">
+    <div class=\"events__upcomming\" >
+      <div class=\"events__upcomming__title h2\">Kommende stævner</div>
+      <div class=\"events_upcomming_divider\"></div>
+      <div v-cloak>
+        <div class=\"events__upcomming__event\" v-for=\"event in events\" v-on:click=\"showEventDetails(event)\" >
+          <div class=\"events_upcomming__event-date\">
+            <div class=\"events_upcomming__event-date-day\">28</div>
+            <div class=\"events_upcomming__event-date-month\">Apr</div>
+          </div>
+          <div class=\"events_upcomming__event-info\">
+            <div class=\"events_upcomming__event-info-title\">{{ event.title }}</div>
+            <div class=\"events_upcomming__event-info-text\">Greve Ateltikstadion, Søndermarkn 2, Greve</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class=\"events__details\">
+      <div v-cloak>
+        <div v-if=\"selectedEvent\">
+          <div class=\"events__details__title h2 text-primary\">{{selectedEvent.title}}</div>
+          <div>la hiashdlahdskaugsdjya skua hgdk</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>initEvents()</script>";
+}
+
 add_shortcode( 'section', 'section_shortcode' );
 add_shortcode( 'image-section', 'image_section_shortcode' );
 add_shortcode( 'package-container', 'package_container_shortcode' );
@@ -228,5 +264,6 @@ add_shortcode( 'package', 'package_shortcode' );
 add_shortcode( 'contacts', 'contacts_shortcode' );
 add_shortcode( 'board-members', 'board_members_shortcode');
 add_shortcode( 'board-member', 'board_member_shortcode');
+add_shortcode( 'events', 'events_shortcode');
 
 ?>
