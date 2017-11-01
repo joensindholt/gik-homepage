@@ -1,20 +1,23 @@
-# gik-homepage
+# GIK Homepage
 
-Homepage for Gentofte Athletics Club
+Homepage for Gentofte Athletics Club using Wordpress, Bootstrap and Font Awesome
 
 ## Running it
  
-Clone it
+Clone
 ```
-git clone ...
-```
-
-Compile and watch the scss files. Ie. *node-sass-watcher*
-```
-node-sass-watcher scss/styles.scss -o styles.css -c 'node-sass <input>'
+git clone git@github.com:joensindholt/gik-homepage.git
 ```
 
-Serve it - ie. with the npm *serve* package
+Install
 ```
-serve .
+cd gik-homepage
+npm install
 ```
+
+Run (starts wordpress in docker and adds the gik theme with sass file watching)
+```
+npm start
+```
+
+Open your browser at `http://localhost:8080`
