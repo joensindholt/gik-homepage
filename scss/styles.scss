@@ -6,7 +6,7 @@
 
 /* Inspiration from: http://tennisclub.themerex.net/ */
 
-/* Build on Bootstrap 4 */ 
+/* Build on Bootstrap 4 and Font Awesome */ 
 
 $theme-colors: (
   "primary": #203354,
@@ -18,12 +18,29 @@ $theme-colors: (
 $btn-border-radius: 0;
 
 @import "node_modules/bootstrap/scss/bootstrap";
+@import "node_modules/font-awesome/scss/font-awesome.scss";
 
 /* Typography */
 
 h1, h2, h3, h4, h5 {
     color: theme-color('primary');
 }
+
+p {
+  line-height: 1.5 * $line-height-base;
+}
+
+/* Icons */
+
+.fa {
+  color: theme-color('secondary');
+}
+
+.fa-light {
+  color: theme-color('secondary-light');
+}
+
+/* Layout */
 
 .page-title {
   background-color: theme-color('light-bg');
@@ -37,13 +54,14 @@ h1, h2, h3, h4, h5 {
 section {
     padding: 50px 0;
 }
+
 section:nth-child(2n) {
     background-color: theme-color('light-bg');
 }
 
-.icon {
-  width: 16px;
-  height: 16px;
+section h1 {
+  font-weight: 800;
+  letter-spacing: -1px;
 }
 
 .app-navbar-top {
@@ -199,6 +217,7 @@ section:nth-child(2n) {
   height: 100%;
   display: flex;
   flex-direction: column;
+  box-shadow: -2px 2px 25px 0px rgba(0, 0, 0, 0.15);
 }
 
 .package__title {
@@ -238,4 +257,24 @@ section:nth-child(2n) {
 .package__text {
   margin: .5rem 0 2.5rem 0; 
   flex-grow: 1;
+}
+
+.contact-box {
+  background: white;
+  padding: 1rem;
+  box-shadow: -2px 2px 25px 0px rgba(0, 0, 0, 0.15);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 150px;
+}
+
+.contact-box__name {
+  font-size: 1.3rem;
+  color: theme-color('primary');
+}
+
+.contact-box__position {
+  color: theme-color('secondary');
 }

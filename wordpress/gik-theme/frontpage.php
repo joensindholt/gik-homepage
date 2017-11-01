@@ -20,6 +20,7 @@
     ?>
     <section>
       <div class="container">
+        <h1 class="text-center mb-5">Meld dig ind</h1>
         <div class="row justify-content-center">
           <?php
           foreach ($memberships as $membershipData) {
@@ -34,7 +35,7 @@
                       <span class="package__price__currency">kr.</span> 
                       <?php echo $membership[1] ?><span class="package__price__interval">/<?php echo $membership[2] ?></span>
                     </p>
-                    <p class="package__text text-muted"><?php echo $membership[3] ?></p>
+                    <div class="package__text text-muted"><?php echo $membership[3] ?></div>
                     <a href="#" class="btn btn-secondary">Læs mere</a>
                   </div>
                 </div>      

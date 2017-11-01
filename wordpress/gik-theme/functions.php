@@ -100,12 +100,23 @@ add_action( 'admin_init', 'custom_settings_page_setup' );
 
 // **************************************************************************************
 
-add_theme_support( 'custom-header' );
+  $custom_header_settngs = array(
+    // Header image height (in pixels)
+    'width' => 1400,
+    // Header image height (in pixels)
+    'height' => 450
+  );
+
+add_theme_support( 'custom-header', $custom_header_settngs );
 add_theme_support( 'custom-logo' );
 
 // **************************************************************************************
 // Short codes
 // **************************************************************************************
+
+function section_shortcode( $atts, $content = null ) {
+	return '<section><div class="container">' . do_shortcode($content) . '</div></section>';
+}
 
 function image_section_shortcode( $atts ) {
   $a = shortcode_atts( array(
@@ -132,12 +143,90 @@ function image_section_shortcode( $atts ) {
 </section>";
 }
 
-add_shortcode( 'image-section', 'image_section_shortcode' );
+function package_shortcode( $atts ) {
+  $a = shortcode_atts( array(
+    'title' => 'title',
+    'price' => '10',
+    'currency' => 'kr.',
+    'interval' => 'år',
+    'text' => 'text',
+    'button-text' => 'Læs mere',
+    'button-link' => 'button-link',
+    'number-of-packages' => 4
+  ), $atts );
 
-function section_shortcode( $atts, $content = null ) {
-	return '<section><div class="container">' . do_shortcode($content) . '</div></section>';
+  $lgCol = 12 / $a['number-of-packages'];
+  $smCol = 6;
+
+  return "<div class=\"col-sm-{$smCol} col-lg-{$lgCol}\">
+  <div class=\"package-container\">
+    <div class=\"package\">
+      <h5 class=\"package__title\">{$a['title']}</h5>
+      <div class=\"package__content\">
+        <p class=\"package__price\">
+          <span class=\"package__price__currency\">{$a['currency']}</span> 
+          {$a['price']}<span class=\"package__price__interval\">/{$a['interval']}</span>
+        </p>
+        <div class=\"package__text text-muted\">{$a['text']}</div>
+        <a href=\"{$a['button-link']}\" class=\"btn btn-secondary\">{$a['button-text']}</a>
+      </div>
+    </div>      
+  </div>    
+</div>";
+}
+
+function package_container_shortcode( $atts, $content = null ) {
+  return "<div class=\"row justify-content-center\">" . do_shortcode($content) . "</div>";
+}
+
+function contacts_shortcode( $atts ) {
+  return "<div class=\"row justify-content-around\">
+  <div class=\"col-sm-3 text-center mb-5 mb-sm-0\">
+    <div class=\"mb-3\"><i class=\"fa fa-4x fa-envelope-o\" aria-hidden=\"true\"></i></div>
+    <div >
+      <a class=\"text-muted\" href=\"mailto:" . get_option('email') ."\"> " . get_option('email') ." </a>
+    </div>
+  </div>
+  <div class=\"col-sm-3 text-center\">
+  <div class=\"mb-3\"><i class=\"fa fa-4x fa-map-o\" aria-hidden=\"true\"></i></div>
+  <div class=\"text-muted\">
+    " . get_option('address') . "
+  </div>
+</div>
+</div>";
+}
+
+function board_members_shortcode( $atts, $content = null ) {
+  return "<div class=\"row justify-content-center\">" . do_shortcode($content) . "</div>";
+}
+
+function board_member_shortcode( $atts ) {
+  $a = shortcode_atts( array(
+    'name' => 'name',
+    'position' => 'position',
+    'email' => '',
+    'phone' => ''
+  ), $atts );
+
+  return "
+  <div class=\"col-sm-5 text-center mb-2 mb-sm-4\">
+    <div class=\"contact-box\">
+      <div class=\"contact-box__name\">{$a['name']}</div>
+      <div class=\"contact-box__position my-2\">{$a['position']}</div>" . ($a['email'] || $a['phone'] ? "
+      <div class=\"contact-box__meta text-muted\">
+        " . ($a['email'] ? "<div><a class=\"text-muted\" href=\"mailto:{$a['email']}\">{$a['email']}</a></div>" : "") . "
+        " . ($a['phone'] ? "<div>{$a['phone']}</div>" : "") . "
+      </div> " : "") . "
+    </div>
+  </div>";
 }
 
 add_shortcode( 'section', 'section_shortcode' );
+add_shortcode( 'image-section', 'image_section_shortcode' );
+add_shortcode( 'package-container', 'package_container_shortcode' );
+add_shortcode( 'package', 'package_shortcode' );
+add_shortcode( 'contacts', 'contacts_shortcode' );
+add_shortcode( 'board-members', 'board_members_shortcode');
+add_shortcode( 'board-member', 'board_member_shortcode');
 
 ?>

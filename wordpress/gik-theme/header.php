@@ -6,6 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="<?php echo get_bloginfo('template_directory'); ?>/style.css">
+  <link rel="stylesheet" href="<?php echo get_bloginfo('template_directory'); ?>/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -16,7 +17,8 @@
       <ul class="navbar-nav text-muted">
       <?php if ( get_option('email') ) : ?>
         <li class="nav-item py-2 mr-4 d-none d-sm-block">
-        <?php echo get_option('email'); ?>
+          <i class="fa fa-light fa-envelope-o" aria-hidden="true"></i>
+          <?php echo get_option('email'); ?>
         </li>
       <?php endif; ?>
       </ul>
