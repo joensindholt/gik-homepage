@@ -36,6 +36,10 @@ p {
   line-height: 1.5 * $line-height-base;
 }
 
+.text-secondary-light {
+  color: theme-color('secondary-light');
+}
+
 /* Icons */
 
 .fa {
@@ -307,6 +311,7 @@ section h1 {
 
 .events__details {
   padding: 1.5rem;
+  min-height: 200px;
 }
 
 .events_upcomming_divider {

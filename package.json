@@ -4,25 +4,24 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "postinstall": "npm run font-awesome-css && npm run font-awesome-fonts",
+    "postinstall": "npm run font-awesome-css && npm run font-awesome-fonts && npm run momentjs",
     "font-awesome-css": "mkdirp wordpress/gik-theme/css && cp node_modules/font-awesome/css/font-awesome.min.css wordpress/gik-theme/css/font-awesome.min.css",
     "font-awesome-fonts": "cp -fr node_modules/font-awesome/fonts wordpress/gik-theme",
-    
+    "momentjs": "cp node_modules/moment/min/moment.min.js wordpress/gik-theme/scripts && cp node_modules/moment/locale/da.js wordpress/gik-theme/scripts",
     "start": "npm run docker-up && npm run echo-browser && npm run node-sass-watch",
     "docker-up": "pushd wordpress && docker-compose up -d && popd",
     "node-sass-watch": "node-sass scss/styles.scss wordpress/gik-theme/style.css --watch --recursive",
     "echo-browser": "echo Point your browser on http://localhost:8080",
-
     "stop": "npm run docker-stop",
     "docker-stop": "pushd wordpress && docker-compose stop && popd",
-    
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Joen Sindholt",
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^4.0.0-beta.2",
-    "font-awesome": "^4.7.0"
+    "font-awesome": "^4.7.0",
+    "moment": "^2.19.1"
   },
   "devDependencies": {
     "echo": "^0.1.9",

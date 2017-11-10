@@ -8419,6 +8419,9 @@ h1, h2, h3, h4, h5 {
 p {
   line-height: 2.25; }
 
+.text-secondary-light {
+  color: #80A716; }
+
 /* Icons */
 .fa {
   color: #7F2422; }
@@ -8638,7 +8641,8 @@ section h1 {
   box-shadow: 2px 0 10px 0px rgba(0, 0, 0, 0.25); }
 
 .events__details {
-  padding: 1.5rem; }
+  padding: 1.5rem;
+  min-height: 200px; }
 
 .events_upcomming_divider {
   width: 40px;

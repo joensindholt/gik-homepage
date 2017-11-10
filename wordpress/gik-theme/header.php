@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="<?php echo get_bloginfo('template_directory'); ?>/css/font-awesome.min.css">
   <script src="https://unpkg.com/vue"></script>
   <script src="<?php echo get_bloginfo('template_directory'); ?>/scripts/app.js"></script>
+  <script src="<?php echo get_bloginfo('template_directory'); ?>/scripts/moment.min.js"></script>
+  <script src="<?php echo get_bloginfo('template_directory'); ?>/scripts/da.js"></script>
 </head>
 
 <body>

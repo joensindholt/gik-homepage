@@ -2,3 +2,5 @@ node_modules
 styles.css
 wordpress/gik-theme/css/font-awesome.min.css
 wordpress/gik-theme/fonts
+wordpress/gik-theme/scripts/da.js
+wordpress/gik-theme/scripts/moment.min.js

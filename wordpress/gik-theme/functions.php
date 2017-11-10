@@ -234,8 +234,8 @@ function events_shortcode( $atts ) {
       <div v-cloak>
         <div class=\"events__upcomming__event\" v-for=\"event in events\" v-on:click=\"showEventDetails(event)\" >
           <div class=\"events_upcomming__event-date\">
-            <div class=\"events_upcomming__event-date-day\">28</div>
-            <div class=\"events_upcomming__event-date-month\">Apr</div>
+            <div class=\"events_upcomming__event-date-day\">{{ eventDate(event.date) }}</div>
+            <div class=\"events_upcomming__event-date-month\">{{ eventMonthShort(event.date) }}</div>
           </div>
           <div class=\"events_upcomming__event-info\">
             <div class=\"events_upcomming__event-info-title\">{{ event.title }}</div>
@@ -244,17 +244,30 @@ function events_shortcode( $atts ) {
         </div>
       </div>
     </div>
-    <div class=\"events__details\">
-      <div v-cloak>
-        <div v-if=\"selectedEvent\">
+    <div class=\"events__details\" v-cloak>
+      <div v-if=\"selectedEvent\" class=\" h-100 d-flex flex-column justify-content-between\">
+        <div>
           <div class=\"events__details__title h2 text-primary\">{{selectedEvent.title}}</div>
-          <div>la hiashdlahdskaugsdjya skua hgdk</div>
+          <div class=\"text-secondary\">{{ moment(selectedEvent.date).format('D. MMMM YYYY') }}</div>
+          <div class=\"my-2\" v-html=\"selectedEventMultilineAddress\"></div>
+          <div class=\"text-muted my-4\" v-if=\"selectedEvent.info\">{{ selectedEvent.info }}</div>
+          <div class=\"my-4\" v-if=\"selectedEvent.link\">
+            <a class=\"text-secondary-light\" target=\"_blank\" :href=\"selectedEvent.link\">Læs mere her</a>
+          </div>
+          <div class=\"my-4\">
+            <a class=\"btn btn-primary text-white\" target=\"_blank\" :href=\"registerLink(selectedEvent.id)\">Tilmeld dig</a>
+          </div>
+        </div>
+        <div>
+          <div class=\"text-muted mt-1\" v-if=\"isOpenForRegistration(selectedEvent)\">
+            <small>Sidste tilmelding: {{ prettyLastRegistrationDate(selectedEvent) }}</small>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-<script>initEvents()</script>";
+<script>app.initEvents()</script>";
 }
 
 add_shortcode( 'section', 'section_shortcode' );
