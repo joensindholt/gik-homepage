@@ -8467,6 +8467,18 @@ section h1 {
   padding-left: 0;
   padding-right: 0; }
 
+.accordion__title:hover {
+  text-decoration: none; }
+
+.accordion__title[aria-expanded=true] .fa-plus-circle {
+  display: none; }
+
+.accordion__title[aria-expanded=false] .fa-minus-circle {
+  display: none; }
+
+.accordion__text {
+  margin-left: 36px; }
+
 .frontpage-title {
   line-height: 24px; }
 

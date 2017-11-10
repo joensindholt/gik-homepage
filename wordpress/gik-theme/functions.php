@@ -270,6 +270,47 @@ function events_shortcode( $atts ) {
 <script>app.initEvents()</script>";
 }
 
+$accordionIdentifier = rand();
+
+function accordion_shortcode( $atts, $content = null  ) {
+  global $accordionIdentifier;
+  $accordionIdentifier = rand();
+  return "<div class=\"col-sm-5 offset-sm-1\"><div id=\"{$accordionIdentifier}\" data-children=\".item\">" . do_shortcode($content) . "</div></div>";
+}
+
+function accordion_item_shortcode( $atts ) {
+  global $accordionIdentifier;
+
+  $a = shortcode_atts( array(
+    'title' => 'title',
+    'text' => 'text',
+    'showonstart' => false
+  ), $atts );
+
+  $identifier = rand();
+
+  return "<div class=\"item pb-4\">
+  <div class=\"h6 accordion__title\" data-toggle=\"collapse\" data-parent=\"#{$accordionIdentifier}\" href=\"#accordion{$identifier}\" aria-expanded=\"" . ($a['showonstart'] ? "true" : "false") . "\" aria-controls=\"accordion{$identifier}\">
+    <div class=\"d-flex align-items-center\">
+      <i class=\"fa fa-2x fa-plus-circle\" aria-hidden=\"true\"></i>
+      <i class=\"fa fa-2x fa-minus-circle\" aria-hidden=\"true\"></i>
+      <div class=\"ml-2\">
+        {$a['title']}
+      </div>
+    </div>
+  </div>
+  <div id=\"accordion{$identifier}\" class=\"collapse " . ($a['showonstart'] ? "show" : "") . "\" role=\"tabpanel\">
+    <div class=\"mb-3 accordion__text text-muted\">
+      {$a['text']}
+    </div>
+  </div>
+</div>";
+}
+
+function multi_accordion_shortcode( $atts, $content = null ) {
+  return "<div class=\"row mt-5\">" . do_shortcode($content) . "</div>";
+}
+
 add_shortcode( 'section', 'section_shortcode' );
 add_shortcode( 'image-section', 'image_section_shortcode' );
 add_shortcode( 'package-container', 'package_container_shortcode' );
@@ -278,5 +319,8 @@ add_shortcode( 'contacts', 'contacts_shortcode' );
 add_shortcode( 'board-members', 'board_members_shortcode');
 add_shortcode( 'board-member', 'board_member_shortcode');
 add_shortcode( 'events', 'events_shortcode');
+add_shortcode( 'multi-accordion', 'multi_accordion_shortcode');
+add_shortcode( 'accordion', 'accordion_shortcode');
+add_shortcode( 'accordion-item', 'accordion_item_shortcode');
 
 ?>
