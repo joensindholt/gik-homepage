@@ -16,7 +16,7 @@
 <!-- 7. WordPress will then import each of the posts, pages, comments, categories, etc. -->
 <!--    contained in this file into your site. -->
 
-<!-- generator="WordPress/4.8.2" created="2017-11-01 14:03" -->
+<!-- generator="WordPress/4.8.2" created="2017-11-14 07:48" -->
 <rss version="2.0"
 	xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
 	xmlns:content="http://purl.org/rss/1.0/modules/content/"
@@ -29,7 +29,7 @@
 	<title>GIK Atletik</title>
 	<link>http://localhost:8080</link>
 	<description></description>
-	<pubDate>Wed, 01 Nov 2017 14:03:45 +0000</pubDate>
+	<pubDate>Tue, 14 Nov 2017 07:48:29 +0000</pubDate>
 	<language>en-US</language>
 	<wp:wxr_version>1.2</wp:wxr_version>
 	<wp:base_site_url>http://localhost:8080</wp:base_site_url>
@@ -394,14 +394,33 @@ Commenter avatars come from <a href="https://gravatar.com">Gravatar</a>.]]></wp:
 		<guid isPermaLink="false">http://localhost:8080/?page_id=16</guid>
 		<description></description>
 		<content:encoded><![CDATA[[section]
-<h5>Indmeldelse</h5>
-Indmeldelse i GIK sker online her. Efter indmeldelse vil der blive opkrævet kontigent
-<h5>Kontigent 2017-2018</h5>
-Aktive atleter koster 1200,- kr/år
-Familiemedlemsskab 2000,- kr/år (dækker hele husstanden)
-Passivt medlemsskab 200,- kr/år
-<h5>Udmeldelse</h5>
-Udmelding sker skriftligt på: gik.atletik@gmail.com
+<h1 style="text-align: center;">Vælg dit medlemskab</h1>
+<p style="text-align: center;">Alle medlemskaber dækker én sæson løbende fra XXX til XXX</p>
+&nbsp;
+
+[package-container]
+[package title="Minierne" price="1200" text="For de 4-7 årige" button-text="Meld dig ind" button-link="#register" /]
+[package title="Mellemholdet" price="1200" text="For de 8-11 årige" button-text="Meld dig ind" button-link="#register" /]
+[package title="Storeholdet" price="1200" text="For de 12-15 årige" button-text="Meld dig ind" button-link="#register" /]
+[package title="Familiemedlemskab" price="2000" text="Ét medlemskab for alle i familien" button-text="Meld dig ind" button-link="#register" /]
+[/package-container]
+[/section]
+
+[section id="register"]
+<h1 style="text-align: center;">Meld dig ind</h1>
+&nbsp;
+
+[register-form][/register-form]
+[/section]
+
+[section]
+<h1 style="text-align: center;">Om medlemskab i GIK</h1>
+&nbsp;
+
+[multi-accordion]
+[accordion][accordion-item title="Hvordan melder jeg mig ind?" text="Sådan her..." showonstart=1][accordion-item title="Hvad og hvor længe er en sæson i GIK?" text="Én sæson løber fra XXX til XXX. I sommerperioden (XXX-XXX) trænes der udendørs på..."][/accordion]
+[accordion][accordion-item title="Hvordan betaler jeg kontingent?" text="Når vi har modtaget din indmeldelse, sender vi dig en kontingent-opkrævning for den første sæson. Herefter modtager du årligt..." showonstart=1][accordion-item title="Hvordan melder jeg mig ud?" text="Hvis du ønsker at udmelde dig bedes du skrive til os på gik.atletik@gmail.com" showonstart=0][/accordion]
+[/multi-accordion]
 [/section]]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
 		<wp:post_id>16</wp:post_id>
@@ -464,22 +483,18 @@ Udmelding sker skriftligt på: gik.atletik@gmail.com
 		<guid isPermaLink="false">http://localhost:8080/?page_id=28</guid>
 		<description></description>
 		<content:encoded><![CDATA[[section]
+<h1 style="text-align: center;">SportyMe</h1>
+<p style="text-align: center;">Hvis du deltager i stævner, ser vi gerne, at du køber og stiller op i vores klub t-shrit. T-shirten købes via <a href="https://sportyme.dk/clubme/gik/">SportyMe</a>. Du er selvfølgelig også velkommen til at købe andet tøj med klubbens logo på.</p>
+&nbsp;
 
-I Gentofte Idrætsklub tilbyder vi at du kan købe en klubtrøje til kr 225,-
+[product-images]
+[product-image image-url="https://sportyme.dk/wp-content/uploads/2015/10/Hundige-BK-Puma-%E2%80%93-Tr%C3%A6nings-T-shirt.png"]
+[product-image image-url="https://sportyme.dk/wp-content/uploads/2015/10/Hundige-BK-Puma-%E2%80%93-Shorts-300x300.png"]
+[product-image image-url="https://sportyme.dk/wp-content/uploads/2015/10/Hundige-BK-Puma-%E2%80%93-Tr%C3%A6ningsbukser-300x300.png"]
+[/product-images]
 
-Klubtrøjen er nødvendig ved deltagelse i stævner, og kan får i flg. størrelser:
-<ul>
- 	<li>5-7</li>
- 	<li>8-10 år</li>
- 	<li>12-14 år</li>
- 	<li>XS dame og herre</li>
- 	<li>S dame og herre</li>
- 	<li>M dame og herre</li>
- 	<li>L dame og herre</li>
- 	<li>XL dame og herre</li>
-</ul>
-Henvendelse på <a href="mailto:gik.atletik@gmail.com">gik.atletik@gmail.com</a> for bestilling af trøje.
-
+&nbsp;
+<p style="text-align: center;">[link-button title="Køb tøjet her" href="https://sportyme.dk/clubme/gik" new-window=1 size="large"]</p>
 [/section]]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
 		<wp:post_id>28</wp:post_id>
@@ -831,7 +846,13 @@ www.claregreenphotography.com";s:17:"created_timestamp";s:10:"1502800410";s:9:"c
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://localhost:8080/?page_id=122</guid>
 		<description></description>
-		<content:encoded><![CDATA[[section style="full-height"][events /][/section]]]></content:encoded>
+		<content:encoded><![CDATA[[section style="full-height"][events /][/section]
+
+[section]
+<h1 style="text-align: center;">Spørgsmål og Svar</h1>
+[multi-accordion][accordion][accordion-item title="Hvor mange discipliner kan jeg stille op i?" text="3, nogle gange færre ;)" showonstart=1][accordion-item title="Hvor gammel skal jeg være?" text="Det kommer an på stævnet. De fleste stævner tillader deltagere fra 7 år og op."][/accordion][accordion][accordion-item title="Hvad med transport?" text="Du kører selv" showonstart=1][/accordion][/multi-accordion]
+
+[/section]]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
 		<wp:post_id>122</wp:post_id>
 		<wp:post_date><![CDATA[2017-11-01 11:38:43]]></wp:post_date>

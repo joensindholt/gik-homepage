@@ -397,3 +397,15 @@ section h1 {
     font-size: 2rem;
   }
 }
+
+.product-image {
+  box-shadow: -2px 2px 25px 0px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  padding: 2rem;
+  transition: transform .3s;
+  background: white;
+}
+
+.product-image:hover {
+  transform: scale(1.05);
+}

@@ -116,10 +116,11 @@ add_theme_support( 'custom-logo' );
 
 function section_shortcode( $atts, $content = null ) {
   $a = shortcode_atts( array(
-    'style' => ''
+    'style' => '',
+    'id' => null
   ), $atts );
 
-	return '<section ' . ($a['style'] ? "class=\"{$a['style']}\"" : "") . '><div class="container">' . do_shortcode($content) . '</div></section>';
+	return '<section ' . ($a['style'] ? "class=\"{$a['style']}\"" : "") . ($a['id'] ? " id=\"{$a['id']}\"" : "") . '><div class="container">' . do_shortcode($content) . '</div></section>';
 }
 
 function image_section_shortcode( $atts ) {
@@ -311,6 +312,80 @@ function multi_accordion_shortcode( $atts, $content = null ) {
   return "<div class=\"row mt-5\">" . do_shortcode($content) . "</div>";
 }
 
+function register_form_shortcode( $atts ) {
+  return "
+  <div class=\"row\">
+    <div class=\"col-lg-8 offset-lg-2\">
+      <div class=\"row\">
+        <div class=\"col-sm-8\">
+          <div class=\"form-group\">
+            <input type=\"text\" class=\"form-control\" id=\"name\" name=\"name\" placeholder=\"Navn:\" />
+          </div>
+        </div>
+        <div class=\"col-sm-4\">
+          <div class=\"form-group\">
+            <input type=\"text\" data-toggle=\"datepicker\" class=\"form-control\" id=\"birthDate\" name=\"birthDate\" placeholder=\"Fødselsdato:\" />
+          </div>
+        </div>
+      </div>
+      <div class=\"row\">
+        <div class=\"col-12\">
+          <div class=\"form-group\">
+            <input type=\"email\" class=\"form-control\" id=\"email\" name=\"email\" placeholder=\"Email:\" />
+          </div>
+        </div>
+      </div>
+      <div class=\"row\">
+        <div class=\"col-12\">
+          <div class=\"form-group\">
+            <textarea class=\"form-control\" id=\"comments\" rows=\"5\" name=\"comments\" placeholder=\"Kommentarer:\"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class=\"row justify-content-center my-4\">
+        <div class=\"col-auto\">
+          <input type=\"submit\" class=\"btn btn-primary btn-lg\" value=\"Send Indmeldelse\" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    $('[data-toggle=\"datepicker\"]').datepicker({ 
+      autoHide: true, 
+      language: 'da-DK', 
+      format: 'dd-mm-yyyy' 
+    });
+  </script>
+  ";
+}
+
+function product_images_shortcode( $atts, $content = null  ) {
+  return "<div class=\"row justify-content-center\">" . do_shortcode($content) . "</div>";
+}
+
+function product_image_shortcode( $atts ) {
+
+  $a = shortcode_atts( array(
+    'image-url' => ''
+  ), $atts );
+
+  return "<div class=\"col-lg-4 col-md-6 col-8\"><img class=\"product-image\" src=\"{$a['image-url']}\"/></div><div class=\"w-100 d-lg-none\"></div>";
+}
+
+function link_button_shortcode( $atts ) {
+  
+  $a = shortcode_atts( array(
+    'title' => 'Title',
+    'href' => '',
+    'new-window' => false,
+    'size' => 'normal'
+  ), $atts );
+  
+  return "<a class=\"btn btn-secondary " . ($a['size'] == "large" ? "btn-lg" : "") . "\" href=\"{$a['href']}\" " . 
+           ($a['new-window'] ? " target=\"_blank\"" : "") .
+           ">{$a['title']}</a>";
+}
+
 add_shortcode( 'section', 'section_shortcode' );
 add_shortcode( 'image-section', 'image_section_shortcode' );
 add_shortcode( 'package-container', 'package_container_shortcode' );
@@ -322,5 +397,9 @@ add_shortcode( 'events', 'events_shortcode');
 add_shortcode( 'multi-accordion', 'multi_accordion_shortcode');
 add_shortcode( 'accordion', 'accordion_shortcode');
 add_shortcode( 'accordion-item', 'accordion_item_shortcode');
+add_shortcode( 'register-form', 'register_form_shortcode');
+add_shortcode( 'product-images', 'product_images_shortcode');
+add_shortcode( 'product-image', 'product_image_shortcode');
+add_shortcode( 'link-button', 'link_button_shortcode');
 
 ?>

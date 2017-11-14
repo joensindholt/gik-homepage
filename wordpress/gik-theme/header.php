@@ -7,10 +7,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="<?php echo get_bloginfo('template_directory'); ?>/style.css">
   <link rel="stylesheet" href="<?php echo get_bloginfo('template_directory'); ?>/css/font-awesome.min.css">
+  <link rel="stylesheet" href="<?php echo get_bloginfo('template_directory'); ?>/css/datepicker.min.css">
   <script src="https://unpkg.com/vue"></script>
   <script src="<?php echo get_bloginfo('template_directory'); ?>/scripts/app.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+    crossorigin="anonymous"></script>
   <script src="<?php echo get_bloginfo('template_directory'); ?>/scripts/moment.min.js"></script>
   <script src="<?php echo get_bloginfo('template_directory'); ?>/scripts/da.js"></script>
+  <script src="<?php echo get_bloginfo('template_directory'); ?>/scripts/datepicker.min.js"></script>
 </head>
 
 <body>
@@ -22,7 +30,7 @@
       <?php if ( get_option('email') ) : ?>
         <li class="nav-item py-2 mr-4 d-none d-sm-block">
           <i class="fa fa-light fa-envelope-o" aria-hidden="true"></i>
-          <?php echo get_option('email'); ?>
+          <a class="text-muted" href="mailto:<?php echo get_option('email'); ?>"><?php echo get_option('email'); ?></a>
         </li>
       <?php endif; ?>
       </ul>
@@ -72,3 +80,4 @@
       </div>
     </nav>
   </div>
+
