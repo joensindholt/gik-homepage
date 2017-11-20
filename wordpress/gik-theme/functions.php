@@ -127,19 +127,20 @@ function image_section_shortcode( $atts ) {
   $a = shortcode_atts( array(
       'image-url' => '',
       'title' => 'Title',
-      'subtitle' => 'Subtitle',
+      'subtitle' => '',
       'text' => 'Some content',
+      'image-location' => 'left'
     ), $atts );
 
   return "<section>
   <div class=\"container\">
-    <div class=\"image-section\">
+    <div class=\"image-section image-section--{$a['image-location']}\">
       <div class=\"image-section__image\" style=\"background-image: url('{$a['image-url']}')\">
       </div>
       <div class=\"image-section__content\">
-        <h1 class=\"image-section__title\">{$a['title']}</h1>
-        <p class=\"image-section__subtitle\">{$a['subtitle']}</p>
-        <div class=\"image-section__text\">
+        <h1 class=\"image-section__title\">{$a['title']}</h1>" .
+        ($a['subtitle'] ? "<p class=\"image-section__subtitle\">{$a['subtitle']}</p>" : "") .
+        "<div class=\"image-section__text\">
           {$a['text']}
         </div>
       </div>
@@ -386,6 +387,37 @@ function link_button_shortcode( $atts ) {
            ">{$a['title']}</a>";
 }
 
+function info_section_shortcode( $atts ) {
+  $a = shortcode_atts( array(
+      'id' => null,
+      'image-url' => '',
+      'title' => 'Title',
+      'subtitle' => '',
+      'text' => 'Some content',
+      'image-location' => 'right',
+      'button-text' => null,
+      'button-link' => null
+    ), $atts );
+
+  return "<section class=\"full-height\" " . ($a['id'] ? "id=\"{$a['id']}\"" : "" ) . ">
+  <div class=\"container\">
+    <div class=\"row d-flex info-section__container info-section__container-{$a['image-location']}\">
+      <div class=\"col-lg-4 bg-primary position-relative info-section__image-wrapper\">
+        <div class=\"info-section__image info-section__image-{$a['image-location']}\" style=\"background-image: url('{$a['image-url']}'); background-size: cover;\"></div>
+      </div>
+      <div class=\"col-lg-8 py-4\">
+        <div class=\"info-section__content-{$a['image-location']}\">
+          <h1 class=\"my-3\">{$a['title']}</h1>
+          <small class=\"text-secondary text-uppercase\">{$a['subtitle']}</small>
+          <p class=\"mt-3\">{$a['text']}</p>" .
+          ($a['button-text'] ? "<a class=\"btn btn-secondary text-white mt-4 mb-4\" href=\"{$a['button-link']}\">{$a['button-text']}</a>" : "")
+      . "</div>
+      </div>
+    </div>
+  </div>
+</section>";
+}
+
 add_shortcode( 'section', 'section_shortcode' );
 add_shortcode( 'image-section', 'image_section_shortcode' );
 add_shortcode( 'package-container', 'package_container_shortcode' );
@@ -401,5 +433,6 @@ add_shortcode( 'register-form', 'register_form_shortcode');
 add_shortcode( 'product-images', 'product_images_shortcode');
 add_shortcode( 'product-image', 'product_image_shortcode');
 add_shortcode( 'link-button', 'link_button_shortcode');
+add_shortcode( 'info-section', 'info_section_shortcode' );
 
 ?>
