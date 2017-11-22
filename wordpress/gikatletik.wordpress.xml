@@ -16,7 +16,7 @@
 <!-- 7. WordPress will then import each of the posts, pages, comments, categories, etc. -->
 <!--    contained in this file into your site. -->
 
-<!-- generator="WordPress/4.8.2" created="2017-11-14 07:48" -->
+<!-- generator="WordPress/4.8.2" created="2017-11-22 13:31" -->
 <rss version="2.0"
 	xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
 	xmlns:content="http://purl.org/rss/1.0/modules/content/"
@@ -29,7 +29,7 @@
 	<title>GIK Atletik</title>
 	<link>http://localhost:8080</link>
 	<description></description>
-	<pubDate>Tue, 14 Nov 2017 07:48:29 +0000</pubDate>
+	<pubDate>Wed, 22 Nov 2017 13:31:51 +0000</pubDate>
 	<language>en-US</language>
 	<wp:wxr_version>1.2</wp:wxr_version>
 	<wp:base_site_url>http://localhost:8080</wp:base_site_url>
@@ -399,18 +399,47 @@ Commenter avatars come from <a href="https://gravatar.com">Gravatar</a>.]]></wp:
 &nbsp;
 
 [package-container]
-[package title="Minierne" price="1200" text="For de 4-7 årige" button-text="Meld dig ind" button-link="#register" /]
-[package title="Mellemholdet" price="1200" text="For de 8-11 årige" button-text="Meld dig ind" button-link="#register" /]
-[package title="Storeholdet" price="1200" text="For de 12-15 årige" button-text="Meld dig ind" button-link="#register" /]
-[package title="Familiemedlemskab" price="2000" text="Ét medlemskab for alle i familien" button-text="Meld dig ind" button-link="#register" /]
+[package title="Minierne" price="1000" text="For de 4-7 årige" button-text="Læs mere" button-link="#minierne" /]
+[package title="Mellemholdet" price="1200" text="For de 8-11 årige" button-text="Læs mere" button-link="#mellemholdet" /]
+[package title="Storeholdet" price="1200" text="For de 12-15 årige" button-text="Læs mere" button-link="#storeholdet" /]
+[package title="Familiemedlemskab" price="2000" text="Ét medlemskab for alle i familien" button-text="Læs mere" button-link="#familie" /]
 [/package-container]
 [/section]
+
+[info-section id="minierne" button-text="Meld dig ind" button-link="#register" image-url="http://www.donegaldaily.com/wp-content/uploads/2014/05/Finn-Valley-area-sports-athletics-30.jpg" title="Minierne" subtitle="For de 4-7 årige" text="På miniholdet tilbyder vi atletik for alle små springmus, hoppetrolde og hurtigløbere. Holdet undervises af nogle af vores dygtige teenage-atleter, som introducerer børnene til atletikken discipliner gennem leg og sjov. Børnene får brugt deres krop, og de får lært nogle gode træningsvaner, som også forbereder dem på den lidt mere seriøse atletik.
+
+Ligesom de ældre børn, træner miniholdet på atletikbanen ved Stadion i sommerperioden, mens træningen i vinterperioden foregår inden- og udenfor Sal A i Nymosehave (Stolpehøj 150). Vi anbefaler, at børnene året rundt møder til træning i tøj, der er tilpasset vejret - gerne lag-på-lag, så der kan tages af og på efter behov.
+
+Trænere: Ulrikke, Andreas og August
+Træningstid: 16-17"]
+
+[info-section id="mellemholdet" image-location="left" button-text="Meld dig ind" button-link="#register" image-url="http://www.hollandsportsac.org.uk/photos/DSCF2777Large.jpg" title="Mellemholdet" subtitle="For de 8-11 årige" text="På miniholdet tilbyder vi atletik for alle små springmus, hoppetrolde og hurtigløbere. Holdet undervises af nogle af vores dygtige teenage-atleter, som introducerer børnene til atletikken discipliner gennem leg og sjov. Børnene får brugt deres krop, og de får lært nogle gode træningsvaner, som også forbereder dem på den lidt mere seriøse atletik.
+
+Ligesom de ældre børn, træner miniholdet på atletikbanen ved Stadion i sommerperioden, mens træningen i vinterperioden foregår inden- og udenfor Sal A i Nymosehave (Stolpehøj 150). Vi anbefaler, at børnene året rundt møder til træning i tøj, der er tilpasset vejret - gerne lag-på-lag, så der kan tages af og på efter behov.
+
+Trænere: Ulrikke, Andreas og August
+Træningstid: 16-17
+
+"]
+
+[info-section id="storeholdet" button-text="Meld dig ind" button-link="#register" image-url="http://nnimgt-a.akamaihd.net/transform/v1/crop/frm/storypad-3DCkEK6J9mUtRwxqM95ENN/b7837592-f956-44f2-b820-565451ed486e.jpg/r0_343_4174_2699_w1200_h678_fmax.jpg" title="Storeholdet" subtitle="For de 12-15 årige" text="På miniholdet tilbyder vi atletik for alle små springmus, hoppetrolde og hurtigløbere. Holdet undervises
+af nogle af vores dygtige teenage-atleter, som introducerer børnene til atletikken discipliner gennem leg og sjov. Børnene får brugt deres krop, og de får lært nogle gode træningsvaner, som også forbereder dem på den lidt mere seriøse atletik.
+
+Ligesom de ældre børn, træner miniholdet på atletikbanen ved Stadion i sommerperioden, mens træningen i vinterperioden foregår inden- og udenfor Sal A i Nymosehave (Stolpehøj 150). Vi anbefaler, at børnene året rundt møder til træning i tøj, der er tilpasset vejret - gerne lag-på-lag, så der kan tages af og på efter behov.
+
+Trænere: Ulrikke, Andreas og August
+Træningstid: 16-17
+
+"]
+
+[info-section id="familie" " image-location="left" button-text="Meld dig ind" button-link="#register" image-url="http://nnimgt-a.akamaihd.net/transform/v1/crop/frm/storypad-3DCkEK6J9mUtRwxqM95ENN/b7837592-f956-44f2-b820-565451ed486e.jpg/r0_343_4174_2699_w1200_h678_fmax.jpg" title="Familiemedlemskab" text="Er I flere i familien der synes atletik er sagen kan i ..."]
 
 [section id="register"]
 <h1 style="text-align: center;">Meld dig ind</h1>
 &nbsp;
 
-[register-form][/register-form]
+[enroll-form confirmation-title="Tak! Vi har modtaget din indmeldelse" confirmation-text="Du vil indenfor få minutter modtage en kvittering på din indmeldelse. Herefter kontakter vi dig med yderligere informationer."][/register-form]
+
 [/section]
 
 [section]
