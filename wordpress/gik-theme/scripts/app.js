@@ -130,15 +130,15 @@ app.initEvents = () => {
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * *
 *
-* Registration form
+* Enrollment form
 *
 * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-app.initRegistration = () => {
+app.initEnrollment = () => {
   var app = new Vue({
-    el: '#registerForm',
+    el: '#enrollmentForm',
     data: {
-      registration: {
+      enrollment: {
         email: '',
         members: [
           { name: '', birthDate: '' }
@@ -159,10 +159,10 @@ app.initRegistration = () => {
     methods: {
       addMember: function () {
         this.validationErrors.members.push({ name: false, birthDate: false });
-        this.registration.members.push({ name: '', birthDate: '' })
+        this.enrollment.members.push({ name: '', birthDate: '' })
       },
       removeMember: function (index) {
-        this.registration.members.splice(index, 1);
+        this.enrollment.members.splice(index, 1);
         this.validationErrors.members.splice(index, 1);
       },
       updateDatePickers: function () {
@@ -177,37 +177,38 @@ app.initRegistration = () => {
           // Update Vue member birthdate when a date is picked
           let index = $('[data-toggle=\"datepicker\"]').index(this);
           let date = moment(e.date).format('DD-MM-YYYY');
-          vm.registration.members[index].birthDate = date;
+          vm.enrollment.members[index].birthDate = date;
         });
       },
       submit: function (event) {
         event.preventDefault();
 
-        // test only
-        this.submitted = true;
-
         this.validate();
         if (!this.isValid) {
           this.validated = true;
-          event.preventDefault();
           return;
         }
 
+        this.submitted = false;
         this.isSubmitting = true;
 
         $.ajax({
           type: 'POST',
-          url: 'https://myathleticsclubapi.azurewebsites.net/api/register', 
-          data: JSON.stringify(this.registration),
+          url: 'https://myathleticsclubapi.azurewebsites.net/api/enroll',
+          data: JSON.stringify(this.enrollment),
           contentType: 'application/json',
           success: () => {
-            console.log('success');
+            this.submitted = true;
+          },
+          error: () => {
+            this.submitted = false;
+          },
+          complete: () => {
+            this.isSubmitting = false;
           }
         });
-
-        this.submitted = true;        
       },
-      validate: function() {
+      validate: function () {
         this.isValid = true;
 
         this.validationErrors = {
@@ -216,21 +217,21 @@ app.initRegistration = () => {
         };
 
         // email is required
-        if (this.registration.email.length === 0) {
+        if (this.enrollment.email.length === 0) {
           this.isValid = false;
           this.validationErrors.email = 'Indtast venligst din email';
         }
         // email must be an email
-        else if (!/.+@.+\..+/.test(this.registration.email)) {
+        else if (!/.+@.+\..+/.test(this.enrollment.email)) {
           this.isValid = false;
           this.validationErrors.email = 'Indtast venligst en gyldig email';
         }
 
         // name and birthdate is required on all members
-        for (let memberIndex in this.registration.members) {
+        for (let memberIndex in this.enrollment.members) {
           this.validationErrors.members.push({});
 
-          let member = this.registration.members[memberIndex];
+          let member = this.enrollment.members[memberIndex];
 
           if (member.name === '') {
             this.isValid = false;
