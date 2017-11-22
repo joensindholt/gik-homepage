@@ -314,48 +314,119 @@ function multi_accordion_shortcode( $atts, $content = null ) {
 }
 
 function register_form_shortcode( $atts ) {
+
+  $a = shortcode_atts( array(
+    'confirmation-title' => 'Tak! Vi har modtaget din indmeldelse',
+    'confirmation-text' => 'Du vil indenfor få minutter modtage en kvittering på din indmeldelse. Herefter kontakter vi dig med yderligere informationer.'
+  ), $atts );
+
   return "
-  <div class=\"row\">
-    <div class=\"col-lg-8 offset-lg-2\">
-      <div class=\"row\">
-        <div class=\"col-sm-8\">
-          <div class=\"form-group\">
-            <input type=\"text\" class=\"form-control\" id=\"name\" name=\"name\" placeholder=\"Navn:\" />
-          </div>
-        </div>
-        <div class=\"col-sm-4\">
-          <div class=\"form-group\">
-            <input type=\"text\" data-toggle=\"datepicker\" class=\"form-control\" id=\"birthDate\" name=\"birthDate\" placeholder=\"Fødselsdato:\" />
-          </div>
-        </div>
-      </div>
-      <div class=\"row\">
-        <div class=\"col-12\">
-          <div class=\"form-group\">
-            <input type=\"email\" class=\"form-control\" id=\"email\" name=\"email\" placeholder=\"Email:\" />
-          </div>
-        </div>
-      </div>
-      <div class=\"row\">
-        <div class=\"col-12\">
-          <div class=\"form-group\">
-            <textarea class=\"form-control\" id=\"comments\" rows=\"5\" name=\"comments\" placeholder=\"Kommentarer:\"></textarea>
-          </div>
-        </div>
-      </div>
-      <div class=\"row justify-content-center my-4\">
-        <div class=\"col-auto\">
-          <input type=\"submit\" class=\"btn btn-primary btn-lg\" value=\"Send Indmeldelse\" />
-        </div>
-      </div>
+  <div id=\"registerForm\" class=\"register-form\">
+    <div 
+      class=\"register-form__confirmation text-center\"
+      v-bind:class=\"{ 'show': submitted }\">
+      <h2>{$a['confirmation-title']}</h2>
+      <p class=\"my-5\">{$a['confirmation-text']}</p>
     </div>
+    <form 
+      novalidate 
+      class=\"register-form__form\" 
+      v-on:submit=\"submit\" 
+      v-bind:class=\"{ 'hide': submitted }\"      
+      >
+      <div class=\"row\">
+        <div class=\"col-lg-8 offset-lg-2\">
+          <div class=\"row\">
+            <div class=\"col-12\">
+              <div class=\"form-group\">
+                <input 
+                  type=\"email\" 
+                  class=\"form-control\" 
+                  v-model.trim=\"registration.email\" 
+                  v-bind:class=\"{ 'is-invalid': validated && validationErrors.email }\" 
+                  v-bind:readonly=\"isSubmitting\"
+                  placeholder=\"Email:\" />
+                <div class=\"invalid-feedback\">
+                  {{ validationErrors.email }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class=\"row\" v-for=\"(member, index) in registration.members\">
+            <div class=\"col-sm-8\">
+              <div class=\"form-group\">
+                <input 
+                  type=\"text\" 
+                  class=\"form-control\" 
+                  v-model.trim=\"member.name\" 
+                  v-bind:class=\"{ 'is-invalid': validated && validationErrors.members[index].name }\" 
+                  v-bind:readonly=\"isSubmitting\"
+                  placeholder=\"Navn:\" />
+                <div class=\"invalid-feedback\">
+                {{ validationErrors.members[index].name }}
+                </div>
+              </div>
+            </div>
+            <div class=\"col-sm-4 position-relative\">
+              <div class=\"form-group\">
+                <input 
+                  type=\"text\" 
+                  data-toggle=\"datepicker\" 
+                  class=\"form-control\" 
+                  v-model.trim=\"member.birthDate\" 
+                  v-bind:class=\"{ 'is-invalid': validated && validationErrors.members[index].birthDate }\" 
+                  v-bind:readonly=\"isSubmitting\"
+                  placeholder=\"Fødselsdato:\" />
+                <div class=\"invalid-feedback\">
+                {{ validationErrors.members[index].birthDate }}
+                </div>
+              </div>
+              <i 
+                v-if=\"index > 0\" 
+                class=\"fa fa-close register-form__remove-member-button\" 
+                v-on:click=\"removeMember(index)\" 
+                title=\"Fjern denne person fra indmeldelsen\">
+              </i>
+            </div>
+          </div>
+          <div class=\"row justify-content-center mb-3\">
+            <div class=\"col-auto\">
+              <a 
+                class=\"btn btn-secondary text-white\" 
+                v-on:click=\"addMember\"
+                v-bind:class=\"{ 'disabled': isSubmitting }\">
+                  Tilføj person
+              </a>
+            </div>
+          </div>
+          <div class=\"row\">
+            <div class=\"col-12\">
+              <div class=\"form-group\">
+                <textarea 
+                  class=\"form-control\" 
+                  rows=\"5\"
+                  v-model.trim=\"registration.comments\"
+                  v-bind:readonly=\"isSubmitting\"
+                  placeholder=\"Kommentarer:\">
+                </textarea>
+              </div>
+            </div>
+          </div>
+          <div class=\"row justify-content-center my-4\">
+            <div class=\"col-auto\">
+              <button 
+                class=\"btn btn-primary btn-lg\"
+                v-bind:class=\"{ 'disabled': isSubmitting }\">
+                  {{ isSubmitting ? 'Sender...' : 'Send Indmeldelse' }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
   </div>
   <script>
-    $('[data-toggle=\"datepicker\"]').datepicker({ 
-      autoHide: true, 
-      language: 'da-DK', 
-      format: 'dd-mm-yyyy' 
-    });
+    app.initRegistration();
   </script>
   ";
 }

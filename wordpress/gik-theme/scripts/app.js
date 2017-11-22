@@ -1,5 +1,11 @@
 let app = {};
 
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*
+* Events box
+*
+* * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
 app.initEvents = () => {
 
   // get events from api
@@ -121,6 +127,142 @@ app.initEvents = () => {
   }
 ]
 */
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*
+* Registration form
+*
+* * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+app.initRegistration = () => {
+  var app = new Vue({
+    el: '#registerForm',
+    data: {
+      registration: {
+        email: '',
+        members: [
+          { name: '', birthDate: '' }
+        ],
+        comments: ''
+      },
+      validated: false,
+      validationErrors: {
+        email: false,
+        members: [
+          { name: false, birthDate: false }
+        ]
+      },
+      isValid: true,
+      isSubmitting: false,
+      submitted: false
+    },
+    methods: {
+      addMember: function () {
+        this.validationErrors.members.push({ name: false, birthDate: false });
+        this.registration.members.push({ name: '', birthDate: '' })
+      },
+      removeMember: function (index) {
+        this.registration.members.splice(index, 1);
+        this.validationErrors.members.splice(index, 1);
+      },
+      updateDatePickers: function () {
+        var vm = this;
+        $('[data-toggle=\"datepicker\"]').datepicker({
+          date: moment().subtract(10, 'years').format('DD-MM-YYYY'),
+          startView: 2,
+          autoHide: true,
+          language: 'da-DK',
+          format: 'dd-mm-yyyy'
+        }).on('pick.datepicker', function (e) {
+          // Update Vue member birthdate when a date is picked
+          let index = $('[data-toggle=\"datepicker\"]').index(this);
+          let date = moment(e.date).format('DD-MM-YYYY');
+          vm.registration.members[index].birthDate = date;
+        });
+      },
+      submit: function (event) {
+        event.preventDefault();
+
+        // test only
+        this.submitted = true;
+
+        this.validate();
+        if (!this.isValid) {
+          this.validated = true;
+          event.preventDefault();
+          return;
+        }
+
+        this.isSubmitting = true;
+
+        $.ajax({
+          type: 'POST',
+          url: 'https://myathleticsclubapi.azurewebsites.net/api/register', 
+          data: JSON.stringify(this.registration),
+          contentType: 'application/json',
+          success: () => {
+            console.log('success');
+          }
+        });
+
+        this.submitted = true;        
+      },
+      validate: function() {
+        this.isValid = true;
+
+        this.validationErrors = {
+          email: false,
+          members: []
+        };
+
+        // email is required
+        if (this.registration.email.length === 0) {
+          this.isValid = false;
+          this.validationErrors.email = 'Indtast venligst din email';
+        }
+        // email must be an email
+        else if (!/.+@.+\..+/.test(this.registration.email)) {
+          this.isValid = false;
+          this.validationErrors.email = 'Indtast venligst en gyldig email';
+        }
+
+        // name and birthdate is required on all members
+        for (let memberIndex in this.registration.members) {
+          this.validationErrors.members.push({});
+
+          let member = this.registration.members[memberIndex];
+
+          if (member.name === '') {
+            this.isValid = false;
+            this.validationErrors.members[memberIndex].name = 'Indtast venligst et navn';
+          }
+
+          // birthdate is required
+          if (member.birthDate === '') {
+            this.isValid = false;
+            this.validationErrors.members[memberIndex].birthDate = 'Indtast venligst en fødselsdato';
+          }
+          // birthdate must be in the format 'DD-MM-YYYY'
+          else if (!/\d{2}-\d{2}-\d{4}/.test(member.birthDate)) {
+            this.isValid = false
+            this.validationErrors.members[memberIndex].birthDate = 'Indtast venligst en gyldig dato';
+          }
+          // birthdate must be a valid date
+          else if (!moment(member.birthDate, 'DD-MM-YYYY')._isValid) {
+            this.isValid = false
+            this.validationErrors.members[memberIndex].birthDate = 'Indtast venligst en gyldig dato';
+          }
+        }
+      }
+    },
+    updated: function () {
+      this.updateDatePickers();
+    },
+    mounted: function () {
+      this.updateDatePickers();
+    }
+  });
+}
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * *
 *

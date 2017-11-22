@@ -465,3 +465,36 @@ section h1 {
   }
 }
 
+.register-form {
+  position: relative;
+}
+
+.register-form__form {
+  transition: opacity .5s;
+  opacity: 1;
+}
+
+.register-form__form.hide {
+  opacity: 0;
+}
+
+.register-form__confirmation {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: opacity .5s;
+  opacity: 0;
+}
+
+.register-form__confirmation.show {
+  opacity: 1;
+}
+
+.register-form__remove-member-button {
+  position: absolute;
+  top: 10px;
+  right: -10px;
+  cursor: pointer;
+}
