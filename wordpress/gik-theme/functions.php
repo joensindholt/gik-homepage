@@ -313,7 +313,7 @@ function multi_accordion_shortcode( $atts, $content = null ) {
   return "<div class=\"row mt-5\">" . do_shortcode($content) . "</div>";
 }
 
-function register_form_shortcode( $atts ) {
+function enrollment_form_shortcode( $atts ) {
 
   $a = shortcode_atts( array(
     'confirmation-title' => 'Tak! Vi har modtaget din indmeldelse',
@@ -321,16 +321,16 @@ function register_form_shortcode( $atts ) {
   ), $atts );
 
   return "
-  <div id=\"registerForm\" class=\"register-form\">
+  <div id=\"enrollmentForm\" class=\"enrollment-form\">
     <div 
-      class=\"register-form__confirmation text-center\"
+      class=\"enrollment-form__confirmation text-center\"
       v-bind:class=\"{ 'show': submitted }\">
       <h2>{$a['confirmation-title']}</h2>
       <p class=\"my-5\">{$a['confirmation-text']}</p>
     </div>
     <form 
       novalidate 
-      class=\"register-form__form\" 
+      class=\"enrollment-form__form\" 
       v-on:submit=\"submit\" 
       v-bind:class=\"{ 'hide': submitted }\"      
       >
@@ -342,7 +342,7 @@ function register_form_shortcode( $atts ) {
                 <input 
                   type=\"email\" 
                   class=\"form-control\" 
-                  v-model.trim=\"registration.email\" 
+                  v-model.trim=\"enrollment.email\" 
                   v-bind:class=\"{ 'is-invalid': validated && validationErrors.email }\" 
                   v-bind:readonly=\"isSubmitting\"
                   placeholder=\"Email:\" />
@@ -352,7 +352,7 @@ function register_form_shortcode( $atts ) {
               </div>
             </div>
           </div>
-          <div class=\"row\" v-for=\"(member, index) in registration.members\">
+          <div class=\"row\" v-for=\"(member, index) in enrollment.members\">
             <div class=\"col-sm-8\">
               <div class=\"form-group\">
                 <input 
@@ -383,7 +383,7 @@ function register_form_shortcode( $atts ) {
               </div>
               <i 
                 v-if=\"index > 0\" 
-                class=\"fa fa-close register-form__remove-member-button\" 
+                class=\"fa fa-close enrollment-form__remove-member-button\" 
                 v-on:click=\"removeMember(index)\" 
                 title=\"Fjern denne person fra indmeldelsen\">
               </i>
@@ -405,7 +405,7 @@ function register_form_shortcode( $atts ) {
                 <textarea 
                   class=\"form-control\" 
                   rows=\"5\"
-                  v-model.trim=\"registration.comments\"
+                  v-model.trim=\"enrollment.comments\"
                   v-bind:readonly=\"isSubmitting\"
                   placeholder=\"Kommentarer:\">
                 </textarea>
@@ -426,7 +426,7 @@ function register_form_shortcode( $atts ) {
     </form>
   </div>
   <script>
-    app.initRegistration();
+    app.initEnrollment();
   </script>
   ";
 }
@@ -500,7 +500,7 @@ add_shortcode( 'events', 'events_shortcode');
 add_shortcode( 'multi-accordion', 'multi_accordion_shortcode');
 add_shortcode( 'accordion', 'accordion_shortcode');
 add_shortcode( 'accordion-item', 'accordion_item_shortcode');
-add_shortcode( 'register-form', 'register_form_shortcode');
+add_shortcode( 'enroll-form', 'enrollment_form_shortcode');
 add_shortcode( 'product-images', 'product_images_shortcode');
 add_shortcode( 'product-image', 'product_image_shortcode');
 add_shortcode( 'link-button', 'link_button_shortcode');
