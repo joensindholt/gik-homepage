@@ -156,8 +156,10 @@ function package_shortcode( $atts ) {
     'currency' => 'kr.',
     'interval' => 'år',
     'text' => 'text',
-    'button-text' => 'Læs mere',
-    'button-link' => 'button-link',
+    'button-text' => 'Meld dig ind',
+    'button-link' => null,
+    'read-more-text' => 'Læs mere',
+    'read-more-link' => null,
     'number-of-packages' => 4
   ), $atts );
 
@@ -174,7 +176,8 @@ function package_shortcode( $atts ) {
           {$a['price']}<span class=\"package__price__interval\">/{$a['interval']}</span>
         </p>
         <div class=\"package__text text-muted\">{$a['text']}</div>
-        <a href=\"{$a['button-link']}\" class=\"btn btn-secondary\">{$a['button-text']}</a>
+          <a href=\"{$a['button-link']}\" class=\"btn btn-secondary\">{$a['button-text']}</a>
+          <a class=\"text-secondary-light mt-2\" " . ($a['read-more-link'] ? "" : "style=\"visibility: hidden;\"") . " href=\"{$a['read-more-link']}\">Læs mere</a>
       </div>
     </div>      
   </div>    
@@ -210,6 +213,7 @@ function board_member_shortcode( $atts ) {
   $a = shortcode_atts( array(
     'name' => 'name',
     'position' => 'position',
+    'responsibilities' => '',
     'email' => '',
     'phone' => ''
   ), $atts );
@@ -218,11 +222,13 @@ function board_member_shortcode( $atts ) {
   <div class=\"col-sm-5 text-center mb-2 mb-sm-4\">
     <div class=\"contact-box\">
       <div class=\"contact-box__name\">{$a['name']}</div>
-      <div class=\"contact-box__position my-2\">{$a['position']}</div>" . ($a['email'] || $a['phone'] ? "
-      <div class=\"contact-box__meta text-muted\">
-        " . ($a['email'] ? "<div><a class=\"text-muted\" href=\"mailto:{$a['email']}\">{$a['email']}</a></div>" : "") . "
-        " . ($a['phone'] ? "<div>{$a['phone']}</div>" : "") . "
-      </div> " : "") . "
+      <div class=\"contact-box__position my-2\">{$a['position']}</div>" . 
+        ($a['responsibilities'] ? "<div class=\"text-secondary-light mb-2\">{$a['responsibilities']}</div>" : "") .
+        ($a['email'] || $a['phone'] ? "
+        <div class=\"contact-box__meta text-muted\">
+          " . ($a['email'] ? "<div><a class=\"text-muted\" href=\"mailto:{$a['email']}\">{$a['email']}</a></div>" : "") . "
+          " . ($a['phone'] ? "<div>{$a['phone']}</div>" : "") . "
+        </div> " : "") . "
     </div>
   </div>";
 }
@@ -234,7 +240,7 @@ function events_shortcode( $atts ) {
       <div class=\"events__upcomming__title h2\">Kommende stævner</div>
       <div class=\"events_upcomming_divider\"></div>
       <div v-cloak>
-        <div class=\"events__upcomming__event\" v-for=\"event in events\" v-on:click=\"showEventDetails(event)\" >
+        <div class=\"events__upcomming__event\" v-for=\"event in events\" v-on:click=\"showEventDetails(event)\" v-bind:class=\"{ 'events__upcomming__event--selected': selectedEvent.id === event.id }\" >
           <div class=\"events_upcomming__event-date\">
             <div class=\"events_upcomming__event-date-day\">{{ eventDate(event.date) }}</div>
             <div class=\"events_upcomming__event-date-month\">{{ eventMonthShort(event.date) }}</div>

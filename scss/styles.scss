@@ -382,6 +382,10 @@ section h1 {
   justify-content: center;
 }
 
+.events__upcomming__event--selected .events_upcomming__event-info {
+  background: rgba(255, 255, 255, 0.3);
+}
+
 .events_upcomming__event-info-title {
   font-weight: bold;
 }
