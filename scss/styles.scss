@@ -50,6 +50,12 @@ p {
   color: theme-color('secondary-light');
 }
 
+/* Controls */
+
+select.form-control {
+  padding-left: 0.5rem;
+}
+
 /* Layout */
 
 .page-title {
@@ -59,6 +65,18 @@ p {
 
 .page-title h3 {
   font-weight: bold;
+}
+
+.logo--large {
+  width: 70px;
+  margin-top: -15px;
+  margin-bottom: -15px;
+}
+
+.logo--small {
+  width: 50px;
+  margin-top: -15px;
+  margin-bottom: -15px;
 }
 
 section {

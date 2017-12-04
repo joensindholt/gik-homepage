@@ -9,6 +9,13 @@ add_action( 'init', 'wpb_custom_new_menu' );
 // Register Custom Navigation Walker
 require_once('class-wp-bootstrap-navwalker.php');
 
+// Allow svg uploads
+function cc_mime_types($mimes) {
+  $mimes['svg'] = 'image/svg+xml';
+  return $mimes;
+}
+add_filter('upload_mimes', 'cc_mime_types');
+
 // **************************************************************************************
 // GIK Settings
 // **************************************************************************************
@@ -160,7 +167,8 @@ function package_shortcode( $atts ) {
     'button-link' => null,
     'read-more-text' => 'Læs mere',
     'read-more-link' => null,
-    'number-of-packages' => 4
+    'number-of-packages' => 4,
+    'membership-type' => null
   ), $atts );
 
   $lgCol = 12 / $a['number-of-packages'];
@@ -176,7 +184,7 @@ function package_shortcode( $atts ) {
           {$a['price']}<span class=\"package__price__interval\">/{$a['interval']}</span>
         </p>
         <div class=\"package__text text-muted\">{$a['text']}</div>
-          <a href=\"{$a['button-link']}\" class=\"btn btn-secondary\">{$a['button-text']}</a>
+          <a href=\"{$a['button-link']}\" class=\"btn btn-secondary\" onclick=\"app.enrollmentApp.setMembershipType('{$a['membership-type']}'); \">{$a['button-text']}</a>
           <a class=\"text-secondary-light mt-2\" " . ($a['read-more-link'] ? "" : "style=\"visibility: hidden;\"") . " href=\"{$a['read-more-link']}\">Læs mere</a>
       </div>
     </div>      
@@ -345,6 +353,28 @@ function enrollment_form_shortcode( $atts ) {
           <div class=\"row\">
             <div class=\"col-12\">
               <div class=\"form-group\">
+                <select 
+                  class=\"form-control\"
+                  v-model=\"enrollment.membershipType\" 
+                  v-bind:class=\"{ 'is-invalid': validated && validationErrors.membershipType }\" 
+                  v-bind:readonly=\"isSubmitting\"
+                  v-on:change=\"onMembershipTypeChange\"
+                  >
+                  <option value=\"\" disabled>Vælg dit medlemskab</option>
+                  <option value=\"minierne\">Minierne</option>
+                  <option value=\"mellemholdet\">Mellemholdet</option>
+                  <option value=\"storeholdet\">Storeholdet</option>
+                  <option value=\"familiemedlemskab\">Familiemedlemskab</option>
+                </select>
+                <div class=\"invalid-feedback\">
+                  {{ validationErrors.membershipType }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class=\"row\">
+            <div class=\"col-12\">
+              <div class=\"form-group\">
                 <input 
                   type=\"email\" 
                   class=\"form-control\" 
@@ -395,7 +425,7 @@ function enrollment_form_shortcode( $atts ) {
               </i>
             </div>
           </div>
-          <div class=\"row justify-content-center mb-3\">
+          <div class=\"row justify-content-center mb-3\" v-if=\"enrollment.membershipType === 'familiemedlemskab'\">
             <div class=\"col-auto\">
               <a 
                 class=\"btn btn-secondary text-white\" 

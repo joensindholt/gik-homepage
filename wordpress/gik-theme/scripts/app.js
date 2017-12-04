@@ -43,7 +43,7 @@ app.initEvents = () => {
       today.setUTCHours(0, 0, 0, 0);
 
       // tell vue to render the events
-      var app = new Vue({
+      var eventsApp = new Vue({
         el: '#events',
         data: {
           events: events,
@@ -87,6 +87,8 @@ app.initEvents = () => {
           }
         }
       });
+
+      app.eventsApp = eventsApp;
     });
   });
 }
@@ -135,10 +137,11 @@ app.initEvents = () => {
 * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 app.initEnrollment = () => {
-  var app = new Vue({
+  var enrollmentApp = new Vue({
     el: '#enrollmentForm',
     data: {
       enrollment: {
+        membershipType: '',
         email: '',
         members: [
           { name: '', birthDate: '' }
@@ -212,9 +215,16 @@ app.initEnrollment = () => {
         this.isValid = true;
 
         this.validationErrors = {
+          membershipType: false,
           email: false,
           members: []
         };
+
+        // membership type is required
+        if (this.enrollment.membershipType.length === 0) {
+          this.isValid = false;
+          this.validationErrors.membershipType = 'Vælg venligst et medlemskab';
+        }
 
         // email is required
         if (this.enrollment.email.length === 0) {
@@ -254,15 +264,47 @@ app.initEnrollment = () => {
             this.validationErrors.members[memberIndex].birthDate = 'Indtast venligst en gyldig dato';
           }
         }
+      },
+      readMembershipTypeFromUrl() {
+        var type = this.getUrlParameterByName('type');
+        if (type) {
+          this.setMembershipType(type);
+        }
+      },
+      setMembershipType(type) {
+        this.enrollment.membershipType = type;
+      },
+      getUrlParameterByName(name) {
+        var url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+          results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+      },
+      onMembershipTypeChange() {
+        this.updateMemberCountLimit();
+      },
+      updateMemberCountLimit() {
+        if (this.enrollment.membershipType !== 'familiemedlemskab') {
+          if (this.enrollment.members.length > 1) {
+            this.enrollment.members = [this.enrollment.members[0]];
+          }
+        }
       }
     },
     updated: function () {
       this.updateDatePickers();
+      this.updateMemberCountLimit();
     },
     mounted: function () {
       this.updateDatePickers();
+      this.readMembershipTypeFromUrl();
     }
   });
+
+  app.enrollmentApp = enrollmentApp;
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * *

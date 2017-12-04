@@ -8429,6 +8429,10 @@ p {
 .fa-light {
   color: #80A716; }
 
+/* Controls */
+select.form-control {
+  padding-left: 0.5rem; }
+
 /* Layout */
 .page-title {
   background-color: #F6F7F3;
@@ -8436,6 +8440,16 @@ p {
 
 .page-title h3 {
   font-weight: bold; }
+
+.logo--large {
+  width: 70px;
+  margin-top: -15px;
+  margin-bottom: -15px; }
+
+.logo--small {
+  width: 50px;
+  margin-top: -15px;
+  margin-bottom: -15px; }
 
 section {
   padding: 50px 0; }
