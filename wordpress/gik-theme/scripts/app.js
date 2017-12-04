@@ -272,6 +272,7 @@ app.initEnrollment = () => {
         }
       },
       setMembershipType(type) {
+        console.log('setting membership type', type, this);
         this.enrollment.membershipType = type;
       },
       getUrlParameterByName(name) {
