@@ -255,7 +255,7 @@ function events_shortcode( $atts ) {
           </div>
           <div class=\"events_upcomming__event-info\">
             <div class=\"events_upcomming__event-info-title\">{{ event.title }}</div>
-            <div class=\"events_upcomming__event-info-text\">Greve Ateltikstadion, Søndermarkn 2, Greve</div>
+            <div class=\"events_upcomming__event-info-text\">{{ event.address }}</div>
           </div>
         </div>
       </div>
@@ -284,6 +284,62 @@ function events_shortcode( $atts ) {
   </div>
 </div>
 <script>app.initEvents()</script>";
+}
+
+function results_shortcode( $atts ) {
+  return "<div id=\"results\" v-cloak >
+  <div class=\"results col-full-height\">
+    <div class=\"results__list pt-4 pr-5 pb-5\">
+      <div>
+        <div class=\"mb-3\">
+          <div class=\"results__list__title h2 text-primary\">Resultater</div>
+          <div class=\"results__list__divider\"></div>
+          <div class=\"results__list__event-title text-secondary-light\">
+            {{results.lastEvent.title}}
+          </div>          
+          <div class=\"results__list__event-date text-secondary\">
+            <small>{{moment(results.lastEvent.date).format('Do MMMM YYYY')}}</small>
+          </div>
+        </div>
+        <div class=\"results__list\">
+          <div class=\"results__list__item\" v-for=\"result in results.lastEvent.results\">
+            <div class=\"results__list__item-text\">
+              <div class=\"results__list__item-text-main\">
+                {{result.name}}, {{result.ageGroup}}, {{result.discipline}}
+              </div>
+              <div class=\"results__list__item-text-value text-muted\">
+
+                {{result.value}}
+              </div>
+            </div>
+            <div class=\"results__list__item-position\" v-bind:class=\"{ 'results__list__item-position--gold': result.position === 1, 'results__list__item-position--silver': result.position === 2, 'results__list__item-position--bronce': result.position === 3 }\">
+              {{result.position}}
+            </div>
+          </div>           
+        </div>
+        <div>
+          <!-- put stuff in the bottom here -->
+        </div>
+      </div>
+    </div>
+    <div class=\"results__medals p-4 py-5 text-center text-white\" >
+      <div class=\"results__medals__title h2 mb-5\">Medaljer i år</div>
+      <div class=\"results__medals__medal\">
+        <div class=\"results__medals__medal-number\">{{results.medalsThisYear.gold}}</div>
+        <img class=\"my-4\" src=\"" . get_bloginfo('template_directory') . "/images/medals-gold.png" . "\" />
+      </div>
+      <div class=\"results__medals__medal\">
+        <div class=\"results__medals__medal-number\">{{results.medalsThisYear.silver}}</div>
+        <img class=\"my-4\" src=\"" . get_bloginfo('template_directory') . "/images/medals-silver.png" . "\" />
+      </div>
+      <div class=\"results__medals__medal\">
+        <div class=\"results__medals__medal-number\">{{results.medalsThisYear.bronce}}</div>
+        <img class=\"my-4\" src=\"" . get_bloginfo('template_directory') . "/images/medals-bronce.png" . "\" />
+      </div>
+    </div>
+  </div>
+</div>
+<script>app.initResults()</script>";
 }
 
 $accordionIdentifier = rand();
@@ -533,6 +589,7 @@ add_shortcode( 'contacts', 'contacts_shortcode' );
 add_shortcode( 'board-members', 'board_members_shortcode');
 add_shortcode( 'board-member', 'board_member_shortcode');
 add_shortcode( 'events', 'events_shortcode');
+add_shortcode( 'results', 'results_shortcode');
 add_shortcode( 'multi-accordion', 'multi_accordion_shortcode');
 add_shortcode( 'accordion', 'accordion_shortcode');
 add_shortcode( 'accordion-item', 'accordion_item_shortcode');

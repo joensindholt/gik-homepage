@@ -1,4 +1,7 @@
-let app = {};
+let app = {
+  apiUrl: 'http://localhost:5000'
+  // apiUrl: 'https://myathleticsclubapi.azurewebsites.net'
+};
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * *
 *
@@ -9,7 +12,7 @@ let app = {};
 app.initEvents = () => {
 
   // get events from api
-  fetch('https://myathleticsclubapi.azurewebsites.net/api/events').then(response => {
+  fetch(app.apiUrl + '/api/events').then(response => {
 
     if (response.status !== 200) {
       console.log('Looks like there was a problem. Status Code: ' + response.status);
@@ -67,7 +70,7 @@ app.initEvents = () => {
           },
 
           registerLink: function (eventId) {
-            return 'https://myathleticsclubapi.azurewebsites.net/#/events/' + eventId
+            return app.apiUrl + '/#/events/' + eventId
           },
 
           prettyLastRegistrationDate: function (event) {
@@ -93,6 +96,44 @@ app.initEvents = () => {
   });
 }
 
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*
+* Results box
+*
+* * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+app.initResults = () => {
+  
+    // get events from api
+    fetch(app.apiUrl + '/api/results').then(response => {
+  
+      if (response.status !== 200) {
+        console.log('Looks like there was a problem. Status Code: ' + response.status);
+        return;
+      }
+  
+      response.json().then(function (results) {
+  
+        // tell vue to render the results
+        var resultsApp = new Vue({
+          el: '#results',
+          data: {
+            results: results
+          },
+          methods: {
+            moment: function (...args) {
+              return moment(...args);
+            }
+          },
+          computed: {
+          }
+        });
+  
+        app.resultsApp = resultsApp;
+      });
+    });
+  }
+  
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * *
 *
 * API "Events" Response 
@@ -197,7 +238,7 @@ app.initEnrollment = () => {
 
         $.ajax({
           type: 'POST',
-          url: 'https://myathleticsclubapi.azurewebsites.net/api/enroll',
+          url: app.apiUrl + '/api/enroll',
           data: JSON.stringify(this.enrollment),
           contentType: 'application/json',
           success: () => {
