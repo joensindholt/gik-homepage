@@ -66,7 +66,6 @@ app.initEvents = () => {
               fetch(app.apiUrl + '/api/events/' + this.selectedEvent.id + '/registrations').then(response => {
                 response.json().then(registrations => {
                   this.registrations = registrations;
-                  console.log('reg', registrations);
                 });
               });
             } else {
