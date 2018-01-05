@@ -205,7 +205,7 @@ function contacts_shortcode( $atts ) {
     </div>
   </div>
   <div class=\"col-sm-3 text-center\">
-  <div class=\"mb-3\"><i class=\"fa fa-4x fa-map-o\" aria-hidden=\"true\"></i></div>
+  <div class=\"mb-3\"><i class=\"fa fa-4x fa-map-marker\" aria-hidden=\"true\"></i></div>
   <div class=\"text-muted\">
     " . get_option('address') . "
   </div>
@@ -271,12 +271,15 @@ function events_shortcode( $atts ) {
             <a class=\"text-secondary-light\" target=\"_blank\" :href=\"selectedEvent.link\">Læs mere her</a>
           </div>
           <div class=\"my-4\">
-            <a class=\"btn btn-primary text-white\" target=\"_blank\" :href=\"registerLink(selectedEvent.id)\">Tilmeld dig</a>
+            <a v-if=\"isOpenForRegistration(selectedEvent)\" class=\"btn btn-primary text-white\" target=\"_blank\" :href=\"registerLink(selectedEvent.id)\">Tilmeld dig</a>
           </div>
         </div>
         <div>
           <div class=\"text-muted mt-1\" v-if=\"isOpenForRegistration(selectedEvent)\">
             <small>Sidste tilmelding: {{ prettyLastRegistrationDate(selectedEvent) }}</small>
+          </div>
+          <div class=\"text-muted mt-1\" v-if=\"!isOpenForRegistration(selectedEvent)\">
+            <small>Tilmelding er lukket</small>
           </div>
         </div>
       </div>
@@ -417,7 +420,7 @@ function enrollment_form_shortcode( $atts ) {
                   v-on:change=\"onMembershipTypeChange\"
                   >
                   <option value=\"\" disabled>Vælg dit medlemskab</option>
-                  <option value=\"minierne\">Minierne</option>
+                  <option value=\"minierne\">Miniholdet</option>
                   <option value=\"mellemholdet\">Mellemholdet</option>
                   <option value=\"storeholdet\">Storeholdet</option>
                   <option value=\"familiemedlemskab\">Familiemedlemskab</option>
@@ -550,7 +553,7 @@ function link_button_shortcode( $atts ) {
            ">{$a['title']}</a>";
 }
 
-function info_section_shortcode( $atts ) {
+function info_section_shortcode( $atts, $content = null ) {
   $a = shortcode_atts( array(
       'id' => null,
       'image-url' => '',
@@ -572,7 +575,9 @@ function info_section_shortcode( $atts ) {
         <div class=\"info-section__content-{$a['image-location']}\">
           <h1 class=\"my-3\">{$a['title']}</h1>
           <small class=\"text-secondary text-uppercase\">{$a['subtitle']}</small>
-          <p class=\"mt-3\">{$a['text']}</p>" .
+          <p class=\"mt-3\">
+            $content
+          </p>" .
           ($a['button-text'] ? "<a class=\"btn btn-secondary text-white mt-4 mb-4\" href=\"{$a['button-link']}\">{$a['button-text']}</a>" : "")
       . "</div>
       </div>

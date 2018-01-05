@@ -382,6 +382,8 @@ section h1 {
   flex-direction: column;
   justify-content: center;
   width: 80px;
+  flex-grow: 0;
+  flex-shrink: 0;
 }
 
 .events_upcomming__event-date-day {
