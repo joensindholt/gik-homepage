@@ -50,11 +50,32 @@ app.initEvents = () => {
         el: '#events',
         data: {
           events: events,
-          selectedEvent: selectedEvent
+          selectedEvent: selectedEvent,
+          registrations: null,
+          registrationsVisible: false
         },
         methods: {
           showEventDetails: function (event) {
             this.selectedEvent = event;
+            this.registrationsVisible = false;
+            this.getRegistrations();
+          },
+
+          getRegistrations: function () {
+            if (this.selectedEvent) {
+              fetch(app.apiUrl + '/api/events/' + this.selectedEvent.id + '/registrations').then(response => {
+                response.json().then(registrations => {
+                  this.registrations = registrations;
+                  console.log('reg', registrations);
+                });
+              });
+            } else {
+              this.registrations = null;
+            }
+          },
+
+          toggleRegistrations: function() {
+            this.registrationsVisible = !this.registrationsVisible;
           },
 
           moment: function (...args) {
@@ -88,6 +109,9 @@ app.initEvents = () => {
           selectedEventMultilineAddress: function () {
             return this.selectedEvent.address.replace(', \n', '<br/>');
           }
+        },
+        mounted: function () {
+          this.getRegistrations();
         }
       });
 

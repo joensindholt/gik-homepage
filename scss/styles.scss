@@ -20,6 +20,12 @@ $btn-border-radius: 0;
 @import "node_modules/bootstrap/scss/bootstrap";
 @import "node_modules/font-awesome/scss/font-awesome.scss";
 
+/* Globals */
+
+.clickable {
+  cursor: pointer;
+}
+
 /* Vue */
 
 [v-cloak] {
@@ -433,6 +439,26 @@ section h1 {
   .events__details__title {
     font-size: 2rem;
   }
+}
+
+.registrations-wrapper {
+  height: 0px;
+  overflow: hidden;
+}
+
+.registrations-wrapper--open {
+  height: auto;
+}
+
+.registrations {
+  border: 1px solid #eee;
+  padding: 15px 20px;
+  background: #fbfbfb;
+  font-size: 80%;
+}
+
+.registration {
+  margin-bottom: 5px;
 }
 
 .results {

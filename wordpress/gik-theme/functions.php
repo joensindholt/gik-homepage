@@ -260,8 +260,8 @@ function events_shortcode( $atts ) {
         </div>
       </div>
     </div>
-    <div class=\"events__details\" v-cloak>
-      <div v-if=\"selectedEvent\" class=\" h-100 d-flex flex-column justify-content-between\">
+    <div class=\"events__details\" v-cloak v-if=\"selectedEvent\" >
+      <div class=\" h-100 d-flex flex-column justify-content-between\">
         <div>
           <div class=\"events__details__title h2 text-primary\">{{selectedEvent.title}}</div>
           <div class=\"text-secondary\">{{ moment(selectedEvent.date).format('D. MMMM YYYY') }}</div>
@@ -272,6 +272,26 @@ function events_shortcode( $atts ) {
           </div>
           <div class=\"my-4\">
             <a v-if=\"isOpenForRegistration(selectedEvent)\" class=\"btn btn-primary text-white\" target=\"_blank\" :href=\"registerLink(selectedEvent.id)\">Tilmeld dig</a>
+          </div>
+          <div class=\"mb-1 clickable\" v-on:click=\"toggleRegistrations()\">
+            <small>
+              Deltagerliste 
+              <i v-if=\"!registrationsVisible\" class=\"fa fa-caret-right\" aria-hidden=\"true\"></i>
+              <i v-if=\"registrationsVisible\" class=\"fa fa-caret-down\" aria-hidden=\"true\"></i>
+            </small>
+          </div>
+          <div class=\"registrations-wrapper\" v-bind:class=\"{ 'registrations-wrapper--open': registrationsVisible }\">
+            <div class=\"registrations\">
+              <div class=\"registration\" v-for=\"registration in registrations\">
+                {{ registration.name }}:
+                <span v-for=\"(discipline, index) in registration.disciplines\">
+                  {{ discipline.name }} ({{ registration.ageClass }}){{ index < registration.disciplines.length - 1 || registration.extraDisciplines.length > 0 ? ', ' : '' }}
+                </span>
+                <span v-for=\"(discipline, index) in registration.extraDisciplines\">
+                  {{ discipline.name }} ({{ discipline.ageClass }}){{ index < registration.extraDisciplines.length - 1 ? ', ' : '' }}
+                </span>
+              </div>
+            </div>
           </div>
         </div>
         <div>

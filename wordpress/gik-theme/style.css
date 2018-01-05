@@ -8408,6 +8408,10 @@ a.text-light-bg:focus, a.text-light-bg:hover {
   overflow: visible;
   clip: auto; }
 
+/* Globals */
+.clickable {
+  cursor: pointer; }
+
 /* Vue */
 [v-cloak] {
   display: none; }
@@ -8735,6 +8739,22 @@ section h1 {
   .events__upcomming__title,
   .events__details__title {
     font-size: 2rem; } }
+
+.registrations-wrapper {
+  height: 0px;
+  overflow: hidden; }
+
+.registrations-wrapper--open {
+  height: auto; }
+
+.registrations {
+  border: 1px solid #eee;
+  padding: 15px 20px;
+  background: #fbfbfb;
+  font-size: 80%; }
+
+.registration {
+  margin-bottom: 5px; }
 
 .results {
   display: flex; }
