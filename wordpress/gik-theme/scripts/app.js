@@ -65,7 +65,7 @@ app.initEvents = () => {
             if (this.selectedEvent) {
               fetch(app.apiUrl + '/api/events/' + this.selectedEvent.id + '/registrations').then(response => {
                 response.json().then(registrations => {
-                  this.registrations = registrations;
+                  this.registrations = registrations.sort((a, b) => a.name.localeCompare(b.name));
                 });
               });
             } else {
