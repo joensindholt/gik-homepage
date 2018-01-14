@@ -312,7 +312,7 @@ function events_shortcode( $atts ) {
 function results_shortcode( $atts ) {
   return "<div id=\"results\" v-cloak >
   <div class=\"results col-full-height\">
-    <div class=\"results__list pt-4 pr-5 pb-5\">
+    <div class=\"results__list pt-4 pr-md-5 pb-5\">
       <div>
         <div class=\"mb-3\">
           <div class=\"results__list__title h2 text-primary\">Resultater</div>

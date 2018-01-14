@@ -8757,7 +8757,12 @@ section h1 {
   margin-bottom: 5px; }
 
 .results {
-  display: flex; }
+  display: flex;
+  flex-direction: column; }
+
+@media (min-width: 768px) {
+  .results {
+    flex-direction: row; } }
 
 .results__list {
   flex-grow: 1; }
@@ -8790,7 +8795,12 @@ section h1 {
   padding: 5px 10px;
   margin: 0 0 5px 0;
   width: 40px;
-  text-align: center; }
+  max-width: 40px;
+  min-width: 40px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .results__list__item-position--gold {
   background: #f7d777; }

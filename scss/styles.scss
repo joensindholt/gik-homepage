@@ -463,6 +463,13 @@ section h1 {
 
 .results {
   display: flex;
+  flex-direction: column;
+}
+
+@include media-breakpoint-up(md) {
+  .results {
+    flex-direction: row;
+  }
 }
 
 .results__list {
@@ -502,7 +509,12 @@ section h1 {
   padding: 5px 10px;
   margin: 0 0 5px 0;
   width: 40px;
-  text-align: center;  
+  max-width: 40px;
+  min-width: 40px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
 }
 
 .results__list__item-position--gold {
