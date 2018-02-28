@@ -315,13 +315,25 @@ function results_shortcode( $atts ) {
     <div class=\"results__list pt-4 pr-md-5 pb-5\">
       <div>
         <div class=\"mb-3\">
-          <div class=\"results__list__title h2 text-primary\">Resultater</div>
+          <div class=\"results__list__title h2 text-primary\">
+            Resultater
+          </div>
           <div class=\"results__list__divider\"></div>
-          <div class=\"results__list__event-title text-secondary-light\">
-            {{results.lastEvent.title}}
-          </div>          
-          <div class=\"results__list__event-date text-secondary\">
-            <small>{{moment(results.lastEvent.date).format('Do MMMM YYYY')}}</small>
+          <div class=\"row align-items-center\">
+            <div class=\"col\">
+              <div class=\"results__list__event-title text-secondary-light\">
+                {{results.lastEvent.title}}
+              </div>
+              <div class=\"results__list__event-date text-secondary\">
+                <small>{{moment(results.lastEvent.date).format('Do MMMM YYYY')}}</small>
+              </div>
+            </div>
+            <div class=\"col-auto\">
+              <div class=\"btn-group btn-group-sm float-right\" role=\"group\">
+                <button type=\"button\" class=\"btn btn-light results__list__buttons\" v-on:click=\"showPreviousEvent()\">Tidligere</button>
+                <button type=\"button\" class=\"btn btn-light results__list__buttons\" v-on:click=\"showNextEvent()\" v-bind:disabled=\"eventIndex === 0\">Senere</button>
+              </div>
+            </div>            
           </div>
         </div>
         <div class=\"results__list\">
@@ -331,14 +343,13 @@ function results_shortcode( $atts ) {
                 {{result.name}}, {{result.ageGroup}}, {{result.discipline}}
               </div>
               <div class=\"results__list__item-text-value text-muted\">
-
                 {{result.value}}
               </div>
             </div>
             <div class=\"results__list__item-position\" v-bind:class=\"{ 'results__list__item-position--gold': result.position === 1, 'results__list__item-position--silver': result.position === 2, 'results__list__item-position--bronce': result.position === 3 }\">
               {{result.position}}
             </div>
-          </div>           
+          </div>
         </div>
         <div>
           <!-- put stuff in the bottom here -->

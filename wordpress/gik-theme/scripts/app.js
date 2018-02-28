@@ -141,11 +141,48 @@ app.initResults = () => {
         var resultsApp = new Vue({
           el: '#results',
           data: {
-            results: results
+            results: results,
+            eventIndex: 0
           },
           methods: {
             moment: function (...args) {
               return moment(...args);
+            },
+
+            showPreviousEvent: function() {
+              this.eventIndex++;
+              this.getOffsetResults().then(results => {
+                console.log('results', results);
+                this.results = {
+                  lastEvent: results,
+                  medalsThisYear: this.results.medalsThisYear
+                }
+              });
+            },
+
+            showNextEvent: function() {
+              if (this.eventIndex == 0) {
+                return;
+              }
+
+              this.eventIndex--;
+              this.getOffsetResults().then(results => {
+                this.results = {
+                  lastEvent: results,
+                  medalsThisYear: this.results.medalsThisYear
+                }
+              });
+            },
+
+            getOffsetResults: function() {
+              return fetch(app.apiUrl + '/api/results/' + this.eventIndex).then(response => {
+                if (response.status !== 200) {
+                  console.log('Looks like there was a problem. Status Code: ' + response.status);
+                  return;
+                }
+
+                return response.json();
+              });
             }
           },
           computed: {

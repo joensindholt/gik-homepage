@@ -8776,6 +8776,10 @@ section h1 {
 .results__list__event-title {
   font-size: 120%; }
 
+.results__list__buttons {
+  background: none;
+  border: none; }
+
 .results__list__item {
   display: flex;
   align-items: stretch; }
