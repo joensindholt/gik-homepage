@@ -8733,7 +8733,8 @@ section h1 {
   .events__details {
     padding: 3rem; }
   .events__upcomming {
-    width: 40%; }
+    width: 40%;
+    min-height: 500px; }
   .events__details {
     padding: 1.5rem;
     width: 60%; }

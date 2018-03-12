@@ -10,13 +10,16 @@
     "momentjs": "cp node_modules/moment/min/moment.min.js wordpress/gik-theme/scripts && cp node_modules/moment/locale/da.js wordpress/gik-theme/scripts",
     "datepicker-js": "cp node_modules/@fengyuanchen/datepicker/dist/datepicker.min.js wordpress/gik-theme/scripts",
     "datepicker-css": "cp node_modules/@fengyuanchen/datepicker/dist/datepicker.min.css wordpress/gik-theme/css",
-    "start": "npm run docker-up && npm run echo-browser && npm run node-sass-watch",
+    "start": "npm run docker-up && npm run echo-browser && npm run watchers",
+    "watchers": "concurrently --kill-others \"npm run node-sass-watch\" \"npm run app-compile\"",
     "docker-up": "pushd wordpress && docker-compose up -d && popd",
     "node-sass-watch": "node-sass scss/styles.scss wordpress/gik-theme/style.css --watch --recursive",
     "echo-browser": "echo Point your browser on http://localhost:8080",
     "stop": "npm run docker-stop",
     "docker-stop": "pushd wordpress && docker-compose stop && popd",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc": "tsc",
+    "app-compile": "npm run tsc -- ./wordpress/gik-theme/scripts/app.ts --watch"
   },
   "author": "Joen Sindholt",
   "license": "ISC",
@@ -27,8 +30,10 @@
     "moment": "^2.19.1"
   },
   "devDependencies": {
+    "concurrently": "^3.5.1",
     "echo": "^0.1.9",
     "mkdirp": "^0.5.1",
-    "node-sass": "^4.5.3"
+    "node-sass": "^4.5.3",
+    "typescript": "^2.7.2"
   }
 }
