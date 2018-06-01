@@ -15,7 +15,7 @@
   <script src="<?php echo get_bloginfo('template_directory'); ?>/scripts/moment.min.js"></script>
   <script src="<?php echo get_bloginfo('template_directory'); ?>/scripts/da.js"></script>
   <script src="<?php echo get_bloginfo('template_directory'); ?>/scripts/datepicker.min.js"></script>
-  <script src="<?php echo get_bloginfo('template_directory'); ?>/scripts/app.js?v=3"></script>
+  <script src="<?php echo get_bloginfo('template_directory'); ?>/scripts/app.js?v=4"></script>
 </head>
 
 <body>

@@ -86,10 +86,20 @@ app.initEvents = function () {
                     return app.apiUrl + "/#/events/" + eventId;
                 },
                 prettyLastRegistrationDate: function (event) {
-                    return (moment(event.registrationPeriodEndDate).format("D. MMMM YYYY") +
-                        " (" +
-                        moment(event.registrationPeriodEndDate).fromNow() +
-                        ")");
+                    var registrationPeriodEndDateMoment = moment(app.dateService.parseDateAsCopenhagenTime(event.registrationPeriodEndDate)).add(1, 'days').subtract(1, 'seconds');
+                    // Use moment to get a pretty "in x days" text
+                    var fromNow = registrationPeriodEndDateMoment.fromNow();
+                    // Special handling of "i dag" and "i går"
+                    if (registrationPeriodEndDateMoment.isSame(moment(), 'day')) {
+                        fromNow = 'i dag';
+                    }
+                    if (registrationPeriodEndDateMoment.isSame(moment().add(1, 'days'), 'day')) {
+                        fromNow = 'i morgen';
+                    }
+                    if (registrationPeriodEndDateMoment.isSame(moment().subtract(1, 'days'), 'day')) {
+                        fromNow = 'i går';
+                    }
+                    return (moment(event.registrationPeriodEndDate).format("D. MMMM YYYY") + " (" + fromNow + ")");
                 },
                 isOpenForRegistration: function (event) {
                     var now = new Date();
@@ -386,6 +396,7 @@ app.initEnrollment = function () {
 // Select all links with hashes
 $(function () {
     $('a[href*="#"]')
+        // Remove links that don't actually link to anything
         .not('[href="#"]')
         .not('[href="#0"]')
         .click(function (event) {
@@ -422,3 +433,31 @@ $(function () {
         }
     });
 });
+/** * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *
+ * Utils
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+app.dateService = {
+    parseDateAsCopenhagenTime: function (dateString) {
+        if (!dateString) {
+            return null;
+        }
+        // If we get a date with timezone we ignore it by removing the time zone indicator
+        if (dateString[dateString.length - 1] === 'Z') {
+            dateString = dateString.substring(0, dateString.length - 1);
+            console.log('ds', dateString);
+        }
+        return new Date(dateString + '+' + app.dateService.getTimezoneOffsetString());
+    },
+    getTimezoneOffsetString: function () {
+        var timezoneOffset = new Date().getTimezoneOffset();
+        if (timezoneOffset === -120) {
+            return '0200';
+        }
+        else if (timezoneOffset === -60) {
+            return '0100';
+        }
+        throw new Error('Could not resolve timezone offset string');
+    }
+};
