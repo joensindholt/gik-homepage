@@ -3,8 +3,8 @@ declare var Vue: any;
 declare var moment: any;
 
 let app = <any>{
-  apiUrl: 'http://localhost:5000'
-  //apiUrl: "https://myathleticsclubapi.azurewebsites.net"
+  //apiUrl: 'http://localhost:5000'
+  apiUrl: "https://myathleticsclubapi.azurewebsites.net"
 };
 
 /** * * * * * * * * * * * * * * * * * * * * * * * * * *

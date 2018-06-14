@@ -1,6 +1,6 @@
 var app = {
-    apiUrl: 'http://localhost:5000'
-    //apiUrl: "https://myathleticsclubapi.azurewebsites.net"
+    //apiUrl: 'http://localhost:5000'
+    apiUrl: "https://myathleticsclubapi.azurewebsites.net"
 };
 /** * * * * * * * * * * * * * * * * * * * * * * * * * *
  *
