@@ -8703,12 +8703,19 @@ section h1 {
   justify-content: center;
   width: 80px;
   flex-grow: 0;
-  flex-shrink: 0; }
+  flex-shrink: 0; 
+  white-space: nowrap;
+}
 
 .events_upcomming__event-date-day {
   font-size: 2rem;
   font-weight: bold;
-  line-height: 1.7rem; }
+  line-height: 1.7rem; 
+}
+
+.events_upcomming__event-date-day--twoday {
+  font-size: 1.1rem;
+}
 
 .events_upcomming__event-info {
   background: rgba(255, 255, 255, 0.1);

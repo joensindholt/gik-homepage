@@ -1,6 +1,6 @@
 var app = {
-    //apiUrl: 'http://localhost:5000'
-    apiUrl: "https://myathleticsclubapi.azurewebsites.net"
+    apiUrl: 'http://localhost:5000'
+    //apiUrl: "https://myathleticsclubapi.azurewebsites.net"
 };
 /** * * * * * * * * * * * * * * * * * * * * * * * * * *
  *
@@ -86,7 +86,7 @@ app.initEvents = function () {
                     return app.apiUrl + "/#/events/" + eventId;
                 },
                 prettyLastRegistrationDate: function (event) {
-                    var registrationPeriodEndDateMoment = moment(app.dateService.parseDateAsCopenhagenTime(event.registrationPeriodEndDate)).add(1, 'days').subtract(1, 'seconds');
+                    var registrationPeriodEndDateMoment = moment(app.dateService.parseServerDate(event.registrationPeriodEndDate)).add(1, 'days').subtract(1, 'seconds');
                     // Use moment to get a pretty "in x days" text
                     var fromNow = registrationPeriodEndDateMoment.fromNow();
                     // Special handling of "i dag" and "i går"
@@ -439,6 +439,12 @@ $(function () {
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 app.dateService = {
+    parseServerDate: function (dateString) {
+        if (!dateString) {
+            return null;
+        }
+        return new Date(dateString);
+    },
     parseDateAsCopenhagenTime: function (dateString) {
         if (!dateString) {
             return null;
@@ -446,7 +452,6 @@ app.dateService = {
         // If we get a date with timezone we ignore it by removing the time zone indicator
         if (dateString[dateString.length - 1] === 'Z') {
             dateString = dateString.substring(0, dateString.length - 1);
-            console.log('ds', dateString);
         }
         return new Date(dateString + '+' + app.dateService.getTimezoneOffsetString());
     },

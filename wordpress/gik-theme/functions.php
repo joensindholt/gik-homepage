@@ -250,7 +250,9 @@ function events_shortcode( $atts ) {
       <div v-cloak>
         <div class=\"events__upcomming__event\" v-for=\"event in events\" v-on:click=\"showEventDetails(event)\" v-bind:class=\"{ 'events__upcomming__event--selected': selectedEvent.id === event.id }\" >
           <div class=\"events_upcomming__event-date\">
-            <div class=\"events_upcomming__event-date-day\">{{ eventDate(event.date) }}</div>
+            <div class=\"events_upcomming__event-date-day\" v-bind:class=\"{ 'events_upcomming__event-date-day--twoday' : event.endDate}\">
+              {{ eventDate(event.date) }}<span v-if=\"event.endDate\">-{{ eventDate(event.endDate) }}</span>
+            </div>
             <div class=\"events_upcomming__event-date-month\">{{ eventMonthShort(event.date) }}</div>
           </div>
           <div class=\"events_upcomming__event-info\">
@@ -264,7 +266,14 @@ function events_shortcode( $atts ) {
       <div class=\" h-100 d-flex flex-column justify-content-between\">
         <div>
           <div class=\"events__details__title h2 text-primary\">{{selectedEvent.title}}</div>
-          <div class=\"text-secondary\">{{ moment(selectedEvent.date).format('D. MMMM YYYY') }}</div>
+          <div class=\"text-secondary\">
+            <div v-if=\"!selectedEvent.endDate\">
+              {{ moment(selectedEvent.date).format('D. MMMM YYYY') }}
+            </div>
+            <div v-if=\"selectedEvent.endDate\">
+              {{ moment(selectedEvent.date).format('D. MMMM YYYY') }} - {{ moment(selectedEvent.endDate).format('D. MMMM YYYY') }}
+            </div>
+          </div>
           <div class=\"my-2\" v-html=\"selectedEventMultilineAddress\"></div>
           <div class=\"text-muted my-4\" v-if=\"selectedEvent.info\">{{ selectedEvent.info }}</div>
           <div class=\"my-4\" v-if=\"selectedEvent.link\">
