@@ -8907,3 +8907,11 @@ section h1 {
   top: 10px;
   right: -10px;
   cursor: pointer; }
+
+.daily-message {
+  background: #7f2422;
+  color: #fff;
+  text-align: center;
+  font-size: 18px;
+  padding: 7px;
+}

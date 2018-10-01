@@ -80,6 +80,12 @@ function setting_footer_contact_text() { ?>
   <input type="text" name="footer_contact_text" id="footer_contact_text" value="<?php echo get_option( 'footer_contact_text' ); ?>" style="width: 100%;" />
 <?php }
 
+// Facebook
+function setting_daily_message() { ?>
+  <input type="text" name="daily_message" id="daily_message" value="<?php echo get_option( 'daily_message' ); ?>" style="width: 100%;" />
+<?php }
+
+
 function custom_settings_page_setup() {
   add_settings_section( 'section', 'All Settings', null, 'theme-options' );
   
@@ -92,6 +98,7 @@ function custom_settings_page_setup() {
   add_settings_field( 'sales_pitch', 'Frontpage Footer Sales Pitch', 'setting_sales_pitch', 'theme-options', 'section' );
   add_settings_field( 'facebook', 'Facebook URL', 'setting_facebook', 'theme-options', 'section' );
   add_settings_field( 'footer_contact_text', 'Footer Contact Text', 'setting_footer_contact_text', 'theme-options', 'section' );
+  add_settings_field( 'daily_message', 'Daily message (frontpage message)', 'setting_daily_message', 'theme-options', 'section' );
   
   register_setting('section', 'topbar_button_text');
   register_setting('section', 'topbar_button_link');
@@ -100,6 +107,7 @@ function custom_settings_page_setup() {
   register_setting('section', 'phone');
   register_setting('section', 'sales_pitch');
   register_setting('section', 'facebook');
+  register_setting('section', 'daily_message');
   register_setting('section', 'footer_contact_text');
 }
 
