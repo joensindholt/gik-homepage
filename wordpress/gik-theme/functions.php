@@ -164,6 +164,12 @@ function image_section_shortcode( $atts ) {
 </section>";
 }
 
+// Defines the number of membership packages. It's set by the package container and used in each of the containers
+$packages = 4;
+
+// Used to store the displayed list of package names used for the membership type select in the form
+$package_names = array();
+
 function package_shortcode( $atts ) {
   $a = shortcode_atts( array(
     'title' => 'title',
@@ -175,14 +181,16 @@ function package_shortcode( $atts ) {
     'button-link' => null,
     'read-more-text' => 'Læs mere',
     'read-more-link' => null,
-    'number-of-packages' => 4,
     'membership-type' => null
   ), $atts );
 
-  $lgCol = 12 / $a['number-of-packages'];
+  $packages = $GLOBALS['packages'];
+  $lgCol = $packages >= 5 ? 4 : 6;
   $smCol = 6;
 
-  return "<div class=\"col-sm-{$smCol} col-lg-{$lgCol}\">
+  array_push($GLOBALS['package_names'], $a['title']);
+
+  return "<div class=\"col-sm-{$smCol} col-lg-{$lgCol} col-xl\">
   <div class=\"package-container\">
     <div class=\"package\">
       <h5 class=\"package__title\">{$a['title']}</h5>
@@ -201,6 +209,12 @@ function package_shortcode( $atts ) {
 }
 
 function package_container_shortcode( $atts, $content = null ) {
+  $a = shortcode_atts(array(
+    'packages' => 4
+  ), $atts);
+
+  $GLOBALS['packages'] = $a['packages'];
+
   return "<div class=\"row justify-content-center\">" . do_shortcode($content) . "</div>";
 }
 
@@ -441,6 +455,11 @@ function enrollment_form_shortcode( $atts ) {
     'confirmation-text' => 'Du vil indenfor få minutter modtage en kvittering på din indmeldelse. Herefter kontakter vi dig med yderligere informationer.'
   ), $atts );
 
+  $options = '';
+  foreach ($GLOBALS['package_names'] as $option) {
+    $options = $options . '<option value="' . str_replace(' ', '_', strtolower($option)) . '">' . $option . '</option>';
+  }
+
   return "
   <div id=\"enrollmentForm\" class=\"enrollment-form\">
     <div 
@@ -468,10 +487,7 @@ function enrollment_form_shortcode( $atts ) {
                   v-on:change=\"onMembershipTypeChange\"
                   >
                   <option value=\"\" disabled>Vælg dit medlemskab</option>
-                  <option value=\"minierne\">Miniholdet</option>
-                  <option value=\"mellemholdet\">Mellemholdet</option>
-                  <option value=\"storeholdet\">Storeholdet</option>
-                  <option value=\"familiemedlemskab\">Familiemedlemskab</option>
+                  " . $options . "
                 </select>
                 <div class=\"invalid-feedback\">
                   {{ validationErrors.membershipType }}
