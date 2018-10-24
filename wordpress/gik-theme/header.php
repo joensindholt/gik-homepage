@@ -5,7 +5,7 @@
   <title>Gentofte Idræts Klub</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="<?php echo get_bloginfo('template_directory'); ?>/style.css?v=1">
+  <link rel="stylesheet" href="<?php echo get_bloginfo('template_directory'); ?>/style.css?v=2">
   <link rel="stylesheet" href="<?php echo get_bloginfo('template_directory'); ?>/css/font-awesome.min.css">
   <link rel="stylesheet" href="<?php echo get_bloginfo('template_directory'); ?>/css/datepicker.min.css">
   <script src="https://unpkg.com/vue"></script>

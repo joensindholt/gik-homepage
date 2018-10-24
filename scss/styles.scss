@@ -642,3 +642,11 @@ section h1 {
   right: -10px;
   cursor: pointer;
 }
+
+.daily-message {
+  color: white;
+  text-align: center;
+  font-size: 1.1rem;
+  padding: 0.6rem;
+  background: theme-color('secondary');
+}

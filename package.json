@@ -14,7 +14,7 @@
     "watchers": "concurrently --kill-others \"npm run node-sass-watch\" \"npm run app-compile\"",
     "docker-up": "pushd wordpress && docker-compose up -d && popd",
     "node-sass-watch": "node-sass scss/styles.scss wordpress/gik-theme/style.css --watch --recursive",
-    "echo-browser": "echo Point your browser on http://localhost:8080",
+    "echo-browser": "echo Point your browser to http://localhost:8000/wp-admin and login with joensindholt@gmail.com and Bine!!24",
     "stop": "npm run docker-stop",
     "docker-stop": "pushd wordpress && docker-compose stop && popd",
     "test": "echo \"Error: no test specified\" && exit 1",
