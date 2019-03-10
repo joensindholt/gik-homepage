@@ -50,6 +50,11 @@ function setting_sales_pitch() { ?>
   <input type="text" name="sales_pitch" id="sales_pitch" value="<?php echo get_option( 'sales_pitch' ); ?>" style="width: 100%;" />
 <?php }
 
+// GDPR
+function setting_gdpr() { ?>
+  <input type="text" name="gdpr" id="gdpr" value="<?php echo get_option( 'gdpr' ); ?>" style="width: 100%;" />
+<?php }
+
 // Address
 function setting_address() { ?>
   <input type="text" name="address" id="address" value="<?php echo get_option( 'address' ); ?>" style="width: 100%;" />
@@ -96,6 +101,7 @@ function custom_settings_page_setup() {
   add_settings_field( 'email', 'Email', 'setting_email', 'theme-options', 'section' );
   add_settings_field( 'phone', 'Phone', 'setting_phone', 'theme-options', 'section' );
   add_settings_field( 'sales_pitch', 'Frontpage Footer Sales Pitch', 'setting_sales_pitch', 'theme-options', 'section' );
+  add_settings_field( 'gdpr', 'Persondatapolitik', 'setting_gdpr', 'theme-options', 'section' );
   add_settings_field( 'facebook', 'Facebook URL', 'setting_facebook', 'theme-options', 'section' );
   add_settings_field( 'footer_contact_text', 'Footer Contact Text', 'setting_footer_contact_text', 'theme-options', 'section' );
   add_settings_field( 'daily_message', 'Daily message (frontpage message)', 'setting_daily_message', 'theme-options', 'section' );
@@ -106,6 +112,7 @@ function custom_settings_page_setup() {
   register_setting('section', 'email');
   register_setting('section', 'phone');
   register_setting('section', 'sales_pitch');
+  register_setting('section', 'gdpr');
   register_setting('section', 'facebook');
   register_setting('section', 'daily_message');
   register_setting('section', 'footer_contact_text');
