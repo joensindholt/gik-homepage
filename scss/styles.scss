@@ -382,7 +382,7 @@ section h1 {
   background: rgba(255, 255, 255, 1);
   margin-right: 3px;
   text-align: center;
-  padding: .5rem 1rem;
+  padding: .5rem .25rem;
   color: theme-color('secondary');
   display: flex;
   flex-direction: column;
@@ -393,9 +393,13 @@ section h1 {
 }
 
 .events_upcomming__event-date-day {
-  font-size: 2rem;
+  font-size: 1.7rem;
   font-weight: bold;
   line-height: 1.7rem;
+}
+
+.events_upcomming__event-date-day--twoday {
+  font-size: 1.4rem;
 }
 
 .events_upcomming__event-info {
