@@ -42,6 +42,13 @@
       </div>
     </div>
   </div>
+  <script>
+    // Prewarm API
+    if (fetch) {
+      fetch('https://myathleticsclubapi.azurewebsites.net/api/health');
+    }
+  </script>
+
 </body>
 
 </html>
