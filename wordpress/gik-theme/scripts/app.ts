@@ -104,26 +104,8 @@ app.initEvents = () => {
           },
 
           prettyLastRegistrationDate: function(event) {
-            var registrationPeriodEndDateMoment = moment(app.dateService.parseServerDate(event.registrationPeriodEndDate)).add(1, 'days').subtract(1, 'seconds');
-
-            // Use moment to get a pretty "in x days" text
-            var fromNow = registrationPeriodEndDateMoment.fromNow();
-
-            // Special handling of "i dag" and "i går"
-            if (registrationPeriodEndDateMoment.isSame(moment(), 'day')) {
-              fromNow = 'i dag';
-            }
-
-            if (registrationPeriodEndDateMoment.isSame(moment().add(1, 'days'), 'day')) {
-              fromNow = 'i morgen';
-            }
-
-            if (registrationPeriodEndDateMoment.isSame(moment().subtract(1, 'days'), 'day')) {
-              fromNow = 'i går';
-            }
-
-            return (
-              moment(event.registrationPeriodEndDate).format("D. MMMM YYYY") + " (" + fromNow + ")"
+            return moment(event.registrationPeriodEndDate).format(
+              "D. MMMM YYYY"
             );
           },
 
@@ -507,37 +489,38 @@ $(function() {
  * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 app.dateService = {
-  parseServerDate: (dateString) => {
+  parseServerDate: dateString => {
     if (!dateString) {
       return null;
     }
 
     return new Date(dateString);
   },
-  
-  parseDateAsCopenhagenTime: (dateString) => {
+
+  parseDateAsCopenhagenTime: dateString => {
     if (!dateString) {
       return null;
     }
 
     // If we get a date with timezone we ignore it by removing the time zone indicator
-    if (dateString[dateString.length - 1] === 'Z') {
+    if (dateString[dateString.length - 1] === "Z") {
       dateString = dateString.substring(0, dateString.length - 1);
     }
 
-    return new Date(dateString + '+' + app.dateService.getTimezoneOffsetString());
-
+    return new Date(
+      dateString + "+" + app.dateService.getTimezoneOffsetString()
+    );
   },
 
   getTimezoneOffsetString: () => {
     var timezoneOffset = new Date().getTimezoneOffset();
 
     if (timezoneOffset === -120) {
-      return '0200';
+      return "0200";
     } else if (timezoneOffset === -60) {
-      return '0100';
+      return "0100";
     }
 
-    throw new Error('Could not resolve timezone offset string');
+    throw new Error("Could not resolve timezone offset string");
   }
-}
+};
