@@ -6,8 +6,8 @@
   "scripts": {
     "postinstall": "npm run font-awesome-css && npm run font-awesome-fonts && npm run momentjs && npm run datepicker-js && npm run datepicker-css",
     "build": "node-sass scss/styles.scss wordpress/gik-theme/style.css --recursive && npm run tsc -- ./wordpress/gik-theme/scripts/app.ts",
-    "test": "ls -l wordpress/gik-theme/scripts/app.js && ls -l wordpress/gik-theme/style.css && ftp --help",
-    "deploy": "",
+    "test": "ls -l wordpress/gik-theme/scripts/app.js && ls -l wordpress/gik-theme/style.css",
+    "deploy": "node deploy.js",
     "font-awesome-css": "mkdirp wordpress/gik-theme/css && cp node_modules/font-awesome/css/font-awesome.min.css wordpress/gik-theme/css/font-awesome.min.css",
     "font-awesome-fonts": "cp -fr node_modules/font-awesome/fonts wordpress/gik-theme",
     "momentjs": "cp node_modules/moment/min/moment.min.js wordpress/gik-theme/scripts && cp node_modules/moment/locale/da.js wordpress/gik-theme/scripts",
