@@ -21,3 +21,5 @@ jobs:
         npm run deploy
       env:
         CI: true
+        DEPLOY_FTP_USERNAME: ${{ secrets.DEPLOY_FTP_USERNAME }}
+        DEPLOY_FTP_PASSWORD: ${{ secrets.DEPLOY_FTP_PASSWORD }}
