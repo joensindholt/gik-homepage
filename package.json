@@ -35,6 +35,7 @@
   "devDependencies": {
     "concurrently": "^3.5.1",
     "echo": "^0.1.9",
+    "ftp-deploy": "^2.3.6",
     "mkdirp": "^0.5.1",
     "node-sass": "^4.5.3",
     "typescript": "^2.7.2"
