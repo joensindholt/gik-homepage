@@ -90,10 +90,12 @@ app.initEvents = function () {
                 },
                 isOpenForRegistration: function (event) {
                     var now = new Date();
-                    var registrationPeriodEndDateOffset = new Date(event.registrationPeriodEndDate);
-                    registrationPeriodEndDateOffset.setDate(registrationPeriodEndDateOffset.getDate() + 1);
-                    return (new Date(event.registrationPeriodStartDate) <= now &&
-                        now <= registrationPeriodEndDateOffset);
+                    var from = new Date(event.registrationPeriodStartDate);
+                    from.setHours(0, 0, 0);
+                    var to = new Date(event.registrationPeriodEndDate);
+                    to.setHours(0, 0, 0);
+                    to.setDate(to.getDate() + 1);
+                    return from <= now && now <= to;
                 }
             },
             computed: {

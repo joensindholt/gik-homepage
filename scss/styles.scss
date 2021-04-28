@@ -6,15 +6,15 @@
 
 /* Inspiration from: http://tennisclub.themerex.net/ */
 
-/* Build on Bootstrap 4 and Font Awesome */ 
+/* Build on Bootstrap 4 and Font Awesome */
 
 $theme-colors: (
   "primary": #203354,
-  "secondary": #7F2422,
-  "secondary-light": #80A716,
-  "light-bg": #F6F7F3
+  "secondary": #7f2422,
+  "secondary-light": #80a716,
+  "light-bg": #f6f7f3,
 );
- 
+
 $btn-border-radius: 0;
 
 @import "node_modules/bootstrap/scss/bootstrap";
@@ -34,8 +34,12 @@ $btn-border-radius: 0;
 
 /* Typography */
 
-h1, h2, h3, h4, h5 {
-    color: theme-color('primary');
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: theme-color("primary");
 }
 
 p {
@@ -43,17 +47,17 @@ p {
 }
 
 .text-secondary-light {
-  color: theme-color('secondary-light');
+  color: theme-color("secondary-light");
 }
 
 /* Icons */
 
 .fa {
-  color: theme-color('secondary');
+  color: theme-color("secondary");
 }
 
 .fa-light {
-  color: theme-color('secondary-light');
+  color: theme-color("secondary-light");
 }
 
 /* Controls */
@@ -65,7 +69,7 @@ select.form-control {
 /* Layout */
 
 .page-title {
-  background-color: theme-color('light-bg');
+  background-color: theme-color("light-bg");
   padding: 30px 0;
 }
 
@@ -74,13 +78,13 @@ select.form-control {
 }
 
 .logo--large {
-  width: 70px;
+  height: 85px;
   margin-top: -15px;
   margin-bottom: -15px;
 }
 
 .logo--small {
-  width: 50px;
+  height: 70px;
   margin-top: -15px;
   margin-bottom: -15px;
 }
@@ -94,7 +98,7 @@ section.full-height {
 }
 
 section:nth-child(2n) {
-  background-color: theme-color('light-bg');
+  background-color: theme-color("light-bg");
 }
 
 section h1 {
@@ -104,7 +108,7 @@ section h1 {
 
 .app-navbar-top {
   height: 50px;
-  font-size: $font-size-base * .8;
+  font-size: $font-size-base * 0.8;
 }
 
 .navbar-collapse {
@@ -127,37 +131,16 @@ section h1 {
   text-decoration: none;
 }
 
-.accordion__title[aria-expanded=true] .fa-plus-circle {
+.accordion__title[aria-expanded="true"] .fa-plus-circle {
   display: none;
 }
 
-.accordion__title[aria-expanded=false] .fa-minus-circle {
+.accordion__title[aria-expanded="false"] .fa-minus-circle {
   display: none;
 }
 
 .accordion__text {
   margin-left: 36px;
-}
-
-.frontpage-title {
-  line-height: 24px;
-}
-
-.frontpage-title .first {
-  font-weight: bold;
-  letter-spacing: -3px;
-}
-
-.frontpage-title .second {
-  font-weight: 200;
-  letter-spacing: -3px;
-  color: #A5181D;
-}
-
-.frontpage-title .third {
-  font-size: 13px;
-  opacity: .6;
-  text-align: center;
 }
 
 .frontpage-header-image {
@@ -170,8 +153,8 @@ section h1 {
 }
 
 .footer {
-  background: theme-color('primary');
-  color: color('white');
+  background: theme-color("primary");
+  color: color("white");
 }
 
 .social {
@@ -192,7 +175,7 @@ section h1 {
 }
 
 .social-facebook {
-  background: theme-color('primary');  
+  background: theme-color("primary");
 }
 
 .image-section {
@@ -202,14 +185,14 @@ section h1 {
 }
 
 .image-section__title {
-  color: color('white');
+  color: color("white");
   font-weight: bold;
   letter-spacing: -1px;
   font-size: 2.5rem;
 }
 
 .image-section__subtitle {
-  color: theme-color('secondary-light');
+  color: theme-color("secondary-light");
   text-transform: uppercase;
   font-size: 80%;
   letter-spacing: 3px;
@@ -232,7 +215,7 @@ section h1 {
   position: relative;
   z-index: 1;
   padding: 2rem 0.5rem;
-  background: theme-color('primary');
+  background: theme-color("primary");
   margin: 0 1rem;
   text-align: center;
   color: white;
@@ -287,7 +270,7 @@ section h1 {
 }
 
 .package__title {
-  background: theme-color('primary');
+  background: theme-color("primary");
   color: white;
   padding: 1rem;
 }
@@ -317,11 +300,11 @@ section h1 {
 .package__price {
   font-size: 2rem;
   font-weight: 800;
-  color: theme-color('primary');
+  color: theme-color("primary");
 }
 
 .package__text {
-  margin: .5rem 0 2.5rem 0; 
+  margin: 0.5rem 0 2.5rem 0;
   flex-grow: 1;
 }
 
@@ -338,11 +321,11 @@ section h1 {
 
 .contact-box__name {
   font-size: 1.3rem;
-  color: theme-color('primary');
+  color: theme-color("primary");
 }
 
 .contact-box__position {
-  color: theme-color('secondary');
+  color: theme-color("secondary");
 }
 
 .events {
@@ -355,8 +338,8 @@ section h1 {
 }
 
 .events__upcomming {
-  background: theme-color('secondary');
-  color: color('white');
+  background: theme-color("secondary");
+  color: color("white");
   padding: 1.5rem;
   box-shadow: 2px 0 10px 0px rgba(0, 0, 0, 0.25);
 }
@@ -368,7 +351,7 @@ section h1 {
 
 .events_upcomming_divider {
   width: 40px;
-  border-top: 1px solid color('white');
+  border-top: 1px solid color("white");
   margin: 1rem 0;
 }
 
@@ -382,8 +365,8 @@ section h1 {
   background: rgba(255, 255, 255, 1);
   margin-right: 3px;
   text-align: center;
-  padding: .5rem .25rem;
-  color: theme-color('secondary');
+  padding: 0.5rem 0.25rem;
+  color: theme-color("secondary");
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -484,7 +467,7 @@ section h1 {
 
 .results__list__divider {
   width: 40px;
-  border-top: 1px solid theme-color('primary');
+  border-top: 1px solid theme-color("primary");
   margin: 1rem 0;
 }
 
@@ -504,7 +487,7 @@ section h1 {
 
 .results__list__item-text {
   flex-grow: 1;
-  background: rgba(0,0,0,.05);
+  background: rgba(0, 0, 0, 0.05);
   padding: 5px 10px;
   margin: 0 5px 5px 0;
   display: flex;
@@ -525,7 +508,7 @@ section h1 {
   text-align: center;
   display: flex;
   align-items: center;
-  justify-content: center;  
+  justify-content: center;
 }
 
 .results__list__item-position--gold {
@@ -542,8 +525,8 @@ section h1 {
 
 .results__medals {
   min-width: 300px;
-  background: theme-color('primary');
-  box-shadow: -2px 0 10px 0  rgba(0,0,0,.25);
+  background: theme-color("primary");
+  box-shadow: -2px 0 10px 0 rgba(0, 0, 0, 0.25);
 }
 
 .results__medals__medal {
@@ -562,7 +545,7 @@ section h1 {
   box-shadow: -2px 2px 25px 0px rgba(0, 0, 0, 0.15);
   width: 100%;
   padding: 2rem;
-  transition: transform .3s;
+  transition: transform 0.3s;
   background: white;
 }
 
@@ -573,7 +556,6 @@ section h1 {
 .info-section__container-left {
   flex-direction: row-reverse;
 }
-
 
 .info-section__image-wrapper {
   min-height: 150px;
@@ -618,7 +600,7 @@ section h1 {
 }
 
 .enrollment-form__form {
-  transition: opacity .5s;
+  transition: opacity 0.5s;
   opacity: 1;
 }
 
@@ -632,7 +614,7 @@ section h1 {
   bottom: 0;
   left: 0;
   right: 0;
-  transition: opacity .5s;
+  transition: opacity 0.5s;
   opacity: 0;
 }
 
@@ -652,5 +634,5 @@ section h1 {
   text-align: center;
   font-size: 1.1rem;
   padding: 0.6rem;
-  background: theme-color('secondary');
+  background: theme-color("secondary");
 }
