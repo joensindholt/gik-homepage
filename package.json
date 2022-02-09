@@ -37,7 +37,7 @@
     "echo": "^0.1.9",
     "ftp-deploy": "^2.3.6",
     "mkdirp": "^0.5.1",
-    "node-sass": "^4.5.3",
+    "node-sass": "^7.0.0",
     "typescript": "^2.7.2"
   }
 }
