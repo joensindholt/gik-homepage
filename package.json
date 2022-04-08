@@ -30,7 +30,7 @@
     "@fengyuanchen/datepicker": "^0.6.3",
     "bootstrap": "^4.3.1",
     "font-awesome": "^4.7.0",
-    "moment": "^2.21.0"
+    "moment": "^2.29.2"
   },
   "devDependencies": {
     "concurrently": "^3.5.1",
